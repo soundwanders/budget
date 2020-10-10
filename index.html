@@ -1,11 +1,68 @@
 <!DOCTYPE html>
-
 <html>
+<head>
+        <meta charset="UTF-8">
+        <meta name="description" content="budget">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<title>
+Budget
+</title>
 
 <body>
-    budget body
-    boogie boarders
-</body>
+<div class = "wrapper">
 
+    <div class = "myBudget">
+        <p class = "income">
+            Income
+            <input id = "newincome">
+            <button>Submit Income</button>
+        </p>
+    </div>
+
+    <div class = "myExpenses">
+        <p class = "newExpense">
+            Add New Expense
+            <input type = "number" class = "newExpense">
+
+        <p class = "allExpenses">
+            Total Expenses
+            <input class = "expense">
+        </p>
+
+
+    </div>
+
+    <div class = "myBalance">
+        <p class = "myBalance">
+            Budget Balance
+            <input class = "balance">
+        </p>
+
+        <p class = "mySurplus">
+            Surplus Income
+            <input class = "surplus">
+        </p>
+
+        <p class = "myDeficit">
+            Spending Deficit
+
+            <input class = "deficit">
+        </p>
+    </div>
+
+    <div class="buttons">
+        <button class = "calculateBalance">Calculate Balance</button>
+
+        <button class = "hardReset">Reset Budget</button>
+
+
+        <button class = "deleteExpense">Clear All Expenses</button>
+    </div>
+
+</div>
+
+</body>
 
 </html>
