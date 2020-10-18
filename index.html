@@ -5,28 +5,34 @@
         <meta name="description" content="budget">
         <meta name="keywords" content="HTML, CSS, JavaScript">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/budgetstyle.css">
 </head>
 <title>
 Budget
 </title>
 
 <body>
+
+<!-- need to create UI to hold all input from user, JS Div containers to hold budget figures-->
 <div class = "wrapper">
 
-    <div class="buttons">
-        <button class = "calculateBalance">Calculate Balance</button>
-
-        <button class = "hardReset">Reset Budget</button>
-
-        <button class = "deleteExpense">Reset Expenses</button>
-    </div>
-
-<!-- create UI to house all input from user, calculating into input containers to hold budget figures-->
-    <div class = "UI">
-        
-    </div>
 
 </div>
+
+<!-- functional buttons to operate the page -->
+    <div class="buttons">
+        <button id = "calculateBalance">Calculate Balance</button>
+
+        <button id = "addIncome" onclick="submitIncome()">Submit Income</button>
+
+        <button id = "addExpense" onclick="submitExpense()">Submit Expense</button>
+
+        <button id = "showAll">Show All Expenses</button>
+
+        <button id = "clearExpense">Clear Expenses</button>
+
+        <button id = "hardReset">Reset Budget</button>
+    </div>
 
 </body>
 

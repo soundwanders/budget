@@ -1,4 +1,39 @@
 .wrapper {
-  background-color: indigo;
+  background-color: beige;
 }
 
+.buttons {
+  margin: 10%;
+}
+
+.myIncome {
+  height: 25px;
+  width: 150px;
+  border: solid 1px black;
+  margin: 5px 0 5px 0;
+  padding: 10px;
+}
+
+.newExpense {
+  height: 25px;
+  width: 150px;
+  border: solid 1px black;
+  margin: 5px 0 5px 0;
+  padding: 10px;
+}
+
+.allExpenses {
+  height: 25px;
+  width: 150px;
+  border: solid 1px black;
+  margin: 5px 0 5px 0;
+  padding: 10px;
+}
+
+.myBudget {
+  height: 25px;
+  width: 150px;
+  border: solid 1px black;
+  margin: 5px 0 5px 0;
+  padding: 10px;
+}

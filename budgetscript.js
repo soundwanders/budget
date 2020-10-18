@@ -1,67 +1,74 @@
 //budget app.js
 
-//get div wrapper from index.html
-const wrapper = document.querySelector('.wrapper');
+//get div budgetWrapper from index.html
+const budgetWrapper = document.querySelector('.wrapper');
 
-//--Create Div that will display new expense, then append to wrapper--//
+//--Create Divs for Budget Balance, Expenses, and Income--//
+//create a div that will hold new expenses
+const expenseContainer = document.createElement('div')
+//create an input to add new expense
+const inputExpense = document.createElement('INPUT');
+//set class of div and input
+    // setting class allows me to use it in CSS and HTML and manipulate
+expenseContainer.classList.add('expenseContainer');
+inputExpense.classList.add('inputExpense');
+inputExpense.id = 'newExp'
+//add text node. this WILL be BLANK, text is placeholder for now
+expenseContainer.textContent = 'Add New Expense';
+// append divs to parent div budgetWrapper
+budgetWrapper.appendChild(expenseContainer);
+budgetWrapper.appendChild(inputExpense);
 
-//create an expense div
-const newExpense = document.createElement('div')
-//set class of expense div to newExpense
-    // setting class allows me to pull it into CSS and HTML and manipulate
-newExpense.classList.add('newExpense');
-//set placeholder label as text node
-newExpense.textContent = 'New Expense';
-// append addBudget to parent div myBudget
-wrapper.prepend(newExpense);
+// Total Expenses
+//create a div that will show total expenses
+const allExpensesContainer = document.createElement('div')
+allExpensesContainer.classList.add('allExpensesContainer');
+allExpensesContainer.textContent = 'Total Expenses';
+budgetWrapper.appendChild(allExpensesContainer);
 
-
-//--Create Div that will display total expenses, then append to wrapper--//
-
-//create a total expenses div
-const allExpense = document.createElement('div')
-//set class of expense div to allExpense
-allExpense.classList.add('allExpense');
-//set placeholder label as text node
-allExpense.textContent = 'Total Expenses';
-// append addBudget to parent div myBudget
-wrapper.prepend(allExpense);
-
-
-//--Create Div that will display user income, then append to wrapper--//
-
-// create an income div
-const myIncome = document.createElement('div')
-// set class of myIncome to myIncome
-myIncome.classList.add('myIncome');
-// set placeholder label as text node
-myIncome.textContent = 'Income';
-// append myIncome to wrapper
-wrapper.prepend(myIncome);
-
-
-//--Create Div that will display user budget balance, then append to wrapper--//
-
-// create a div to display budget
-const showBudget = document.createElement('div');
-// set class list of showBudget div to myBudget
-showBudget.classList.add('newBudget');
-showBudget.setAttribute('type' , 'text');
-// set placeholder label as text node
-showBudget.textContent = 'Budget Balance';
-// append addBudget to wrapper
-wrapper.prepend(showBudget);
+// Income
+// create a div that will display income
+const incomeContainer = document.createElement('div')
+const setIncome = document.createElement('INPUT');
+incomeContainer.classList.add('incomeContainer');
+incomeContainer.textContent = 'Income here';
+setIncome.classList.add('setIncome');
+setIncome.id = 'newInc'
+setIncome.setAttribute('type', 'text');
+budgetWrapper.appendChild(incomeContainer);
+budgetWrapper.appendChild(setIncome);
 
 
+// Budget Balance
+// create a div that will display budget
+const budgetContainer = document.createElement('div');
+budgetContainer.classList.add('budgetContainer');
+budgetContainer.setAttribute('type' , 'text');
+budgetContainer.textContent = 'Budget Balance';
+budgetWrapper.appendChild(budgetContainer);
 
-//--Create Div to show Expense items then append to wrapper--//
-// -- this will need to be refined to actually pull in all the expense items
 
-// create a div that will show all expenses
-const showExpense = document.createElement('div');
-// set class list of showBudget div to myBudget
-showExpense.classList.add('showExpense');
-// set placeholder label as text node
-showExpense.textContent = 'Show All Expenses';
-// append showExpense to wrapper
-wrapper.prepend(showExpense);
+//-- Create Div to show Expense items then append to budgetWrapper --//
+    // this will need to be refined to actually pull in all the expense items
+const expenseList = document.createElement('div');
+expenseList.classList.add('expenseList');
+expenseList.textContent = 'Show All Expenses';
+budgetWrapper.appendChild(expenseList);
+
+////////////////////////////////////// 
+
+function submitIncome() {
+    newIncome = document.getElementById("newInc").value;
+    incomeContainer.innerHTML = '';
+    incomeContainer.textContent = '';
+
+    incomeContainer.append(newIncome);
+};
+
+function submitExpense() {
+    newExpense = document.getElementById("newExp").value;
+    expenseContainer.innerHTML = '';
+    expenseContainer.textContent = '';
+
+    expenseContainer.append(newExpense);
+};
