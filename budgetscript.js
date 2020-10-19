@@ -59,6 +59,7 @@ budgetContainer.textContent = 'Budget Balance';
 
 budgetWrapper.appendChild(budgetContainer);
 
+
 //-- Create Div to show Expense items then append to budgetWrapper --//
     // this will need to be refined to actually pull in all the expense items
 const expenseList = document.createElement('div');
@@ -83,14 +84,14 @@ function submitExpense() {
     newExpense = document.getElementById('newExp').value;
     expItemName = document.getElementById('expName').value;
 
+    if (newExpense != 0) {
     expenseContainer.innerHTML = '';
     expenseContainer.textContent = '';
 
     expenseContainer.append(expItemName);
     expenseContainer.append(' ' + parseInt(newExpense));
-    
-    if (newExpense == 0) {
+
+    } else if (newExpense == 0) {
         alert("Expense amount must be a number greater than zero");
-        return;
     }
 };
