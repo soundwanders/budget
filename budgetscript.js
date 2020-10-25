@@ -3,14 +3,17 @@
 //get div budgetWrapper from index.html
 const budgetWrapper = document.querySelector('.wrapper');
 
-//--Create Divs for Budget Balance, Expenses, and Income--//
-//create a div that will hold new expenses
-const expenseContainer = document.createElement('div');
-//create input to add new expense name
-const expenseName = document.createElement('INPUT');
-//create an input to add new expense $$ amount
-const inputExpense = document.createElement('INPUT');
+//--Create Forms and Inputs for Budget, Expenses, Income--//
 
+//Expenses
+//create a list that will hold expenses
+const expenseContainer = document.createElement('UL');
+expenseContainer.classList.add('expenseList');
+expenseContainer.setAttribute("id", "expenseUL");
+//create input to add new expense name
+const expenseName = document.createElement('input');
+//create an input to add new expense $$ amount
+const inputExpense = document.createElement('input');
 // set expenseName class , id , type
 expenseName.classList.add('inputs');
 expenseName.id = 'expName';
@@ -19,9 +22,8 @@ expenseName.setAttribute('type', 'text');
 inputExpense.classList.add('inputs');
 inputExpense.id = 'newExp';
 inputExpense.setAttribute('type', 'text');
-//set class for expenseContainer
-expenseContainer.classList.add('expenseContainer');
-//add text node to expenseContainer. this will need to hold expense items...array??
+
+//add text node to expenseContainer...think about what to do with this
 expenseContainer.textContent = 'Add New Expense';
 
 // append div and inputs to parent budgetWrapper
@@ -29,17 +31,11 @@ budgetWrapper.appendChild(expenseContainer);
 budgetWrapper.appendChild(expenseName);
 budgetWrapper.appendChild(inputExpense);
 
-// Total Expenses
-//create a div that will show total expenses
-const allExpensesContainer = document.createElement('div');
-allExpensesContainer.classList.add('allExpensesContainer');
-allExpensesContainer.textContent = 'Total Expenses';
-budgetWrapper.appendChild(allExpensesContainer);
-
 // Income
-// create a div that will display income
-const incomeContainer = document.createElement('div')
-const setIncome = document.createElement('INPUT');
+// create form to display income
+const incomeContainer = document.createElement('form')
+//create input for user to set income
+const setIncome = document.createElement('input');
 incomeContainer.classList.add('incomeContainer');
 incomeContainer.textContent = 'Income';
 setIncome.classList.add('inputs');
@@ -51,26 +47,15 @@ budgetWrapper.appendChild(setIncome);
 
 
 // Budget Balance
-// create a div that will display budget
-const budgetContainer = document.createElement('div');
+// create a form that will display budget
+const budgetContainer = document.createElement('form');
 budgetContainer.classList.add('budgetContainer');
 budgetContainer.setAttribute('type' , 'text');
 budgetContainer.textContent = 'Budget Balance';
 
 budgetWrapper.appendChild(budgetContainer);
-
-
 // reg exp is used in submit functions to check if input is a number between 0-9
 var regEx = /^[0-9]+$/;
-
-
-//-- Create Div to show Expense items then append to budgetWrapper --//
-    // this will need to be refined to actually pull in all the expense items
-const expenseList = document.createElement('div');
-expenseList.classList.add('expenseList');
-expenseList.textContent = 'Show All Expenses';
-
-budgetWrapper.appendChild(expenseList);
 
 ////////////////////////////////////// 
 
@@ -96,8 +81,11 @@ function submitIncome() {
     } else {
     incomeContainer.innerHTML = '';
     incomeContainer.textContent = '';  
-
     incomeContainer.append(parseFloat(newIncome));
+
+    //clear income input fields
+    setIncome.value = '';
+    setIncome.innerHTML = '';
     }
 };
 
@@ -108,7 +96,6 @@ function submitExpense() {
 
  if (newExpense == 0 || '') {
         alert("Expense amount cannot be zero or empty");
-
     } else if (!newExpense.match(regEx)) {
         alert("Expense amount must be a number");
 // if expense number's first value is 0 and next value is > 0,
@@ -116,10 +103,15 @@ function submitExpense() {
     } else if (newExpense[0] == 0 && newExpense[1].match(regEx)) {
         expenseContainer.innerHTML = '';
         expenseContainer.textContent = ''; 
-
         expenseContainer.append(expItemName);
         newExpense.slice[0];
         expenseContainer.append(' ' + parseFloat(newExpense));
+
+        //clear expense input fields
+        expenseName.value = '';
+        expenseName.innerHTML = '';
+        inputExpense.value = '';
+        inputExpense.innerHTML = '';
 
     } else {
     expenseContainer.innerHTML = '';
@@ -127,5 +119,11 @@ function submitExpense() {
 
     expenseContainer.append(expItemName);
     expenseContainer.append(' ' + parseFloat(newExpense));
+
+    expenseName.value = '';
+    expenseName.innerHTML = '';
+    inputExpense.value = '';
+    inputExpense.innerHTML = '';
     }
 };
+
