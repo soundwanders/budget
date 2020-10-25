@@ -3,13 +3,16 @@
 //get div budgetWrapper from index.html
 const budgetWrapper = document.querySelector('.wrapper');
 
-//--Create Forms and Inputs for Budget, Expenses, Income--//
+// create global expenseList to be called in functions
+let expenseList = document.createElement('UL');
+expenseList.classList.add('myExpList');
+expenseList.setAttribute('id' , 'expenseUL');
+// run generateList on page load
+window.onload = generateList();
 
-//Expenses
-//create a list that will hold expenses
-const expenseContainer = document.createElement('UL');
-expenseContainer.classList.add('expenseList');
-expenseContainer.setAttribute("id", "expenseUL");
+//--Create Inputs for Expenses and Income--//
+
+// Expense Inputs
 //create input to add new expense name
 const expenseName = document.createElement('input');
 //create an input to add new expense $$ amount
@@ -23,11 +26,7 @@ inputExpense.classList.add('inputs');
 inputExpense.id = 'newExp';
 inputExpense.setAttribute('type', 'text');
 
-//add text node to expenseContainer...think about what to do with this
-expenseContainer.textContent = 'Add New Expense';
-
-// append div and inputs to parent budgetWrapper
-budgetWrapper.appendChild(expenseContainer);
+// append inputs to parent userExpenses
 budgetWrapper.appendChild(expenseName);
 budgetWrapper.appendChild(inputExpense);
 
@@ -45,7 +44,6 @@ setIncome.setAttribute('type', 'text');
 budgetWrapper.appendChild(incomeContainer);
 budgetWrapper.appendChild(setIncome);
 
-
 // Budget Balance
 // create a form that will display budget
 const budgetContainer = document.createElement('form');
@@ -55,9 +53,27 @@ budgetContainer.textContent = 'Budget Balance';
 
 budgetWrapper.appendChild(budgetContainer);
 // reg exp is used in submit functions to check if input is a number between 0-9
-var regEx = /^[0-9]+$/;
+const regEx = /^[0-9]+$/;
 
 ////////////////////////////////////// 
+
+// GENERATE EXPENSE LIST Function
+//create a function to generate a list that will hold expense items
+function generateList() {
+
+    itemList = ['test'];
+    document.getElementById('expenseUL').appendChild(expenseList);
+    itemList.forEach(renderList);
+
+    function renderList(element, index, arr) {
+        let li = document.createElement('li');
+        li.setAttribute('class','item');
+        expenseList.appendChild(li);
+        li.innerHTML = li.innerHTML + element;
+    }
+
+    budgetWrapper.appendChild(expenseList);
+};
 
 // SUBMIT INCOME Function
 function submitIncome() {
@@ -89,23 +105,22 @@ function submitIncome() {
     }
 };
 
-// SUBMIT EXPENSE AMOUNT and NAME Function
+// SUBMIT EXPENSE ITEM Function
 function submitExpense() {
-    newExpense = document.getElementById('newExp').value;
     expItemName = document.getElementById('expName').value;
+    newExpense = document.getElementById('newExp').value;
 
  if (newExpense == 0 || '') {
         alert("Expense amount cannot be zero or empty");
     } else if (!newExpense.match(regEx)) {
         alert("Expense amount must be a number");
+
 // if expense number's first value is 0 and next value is > 0,
 // slice 0, then parseFloat and append the rest
     } else if (newExpense[0] == 0 && newExpense[1].match(regEx)) {
-        expenseContainer.innerHTML = '';
-        expenseContainer.textContent = ''; 
-        expenseContainer.append(expItemName);
         newExpense.slice[0];
-        expenseContainer.append(' ' + parseFloat(newExpense));
+
+        expenseList.append(expItemName + ' ' + parseFloat(newExpense));
 
         //clear expense input fields
         expenseName.value = '';
@@ -114,16 +129,13 @@ function submitExpense() {
         inputExpense.innerHTML = '';
 
     } else {
-    expenseContainer.innerHTML = '';
-    expenseContainer.textContent = '';  
+        expenseList.append(expItemName + ' ' + parseFloat(newExpense));
 
-    expenseContainer.append(expItemName);
-    expenseContainer.append(' ' + parseFloat(newExpense));
-
-    expenseName.value = '';
-    expenseName.innerHTML = '';
-    inputExpense.value = '';
-    inputExpense.innerHTML = '';
+        //clear expense input fields
+        expenseName.value = '';
+        expenseName.innerHTML = '';
+        inputExpense.value = '';
+        inputExpense.innerHTML = '';
     }
 };
 
