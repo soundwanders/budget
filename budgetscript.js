@@ -7,8 +7,8 @@ const budgetWrapper = document.querySelector('.wrapper');
 var expenseList = document.createElement('UL');
 expenseList.classList.add('myExpList');
 expenseList.setAttribute('id' , 'expenseUL');
-// run generateList on page load
-window.onload = generateList();
+
+budgetWrapper.appendChild(expenseList);
 
 //--Create Inputs for Expenses and Income--//
 
@@ -56,16 +56,6 @@ budgetWrapper.appendChild(budgetContainer);
 var regEx = /^[0-9]+$/;
 
 ////////////////////////////////////// 
-
-// GENERATE EXPENSE LIST Function
-//create a function to generate a list that will hold expense items
-function generateList() {
-    itemList = ['test'];
-    document.getElementById('expenseUL').appendChild(expenseList);
-    }
-
-    budgetWrapper.appendChild(expenseList);
-
 
 // SUBMIT INCOME Function
 function submitIncome() {
