@@ -4,7 +4,7 @@
 const budgetWrapper = document.querySelector('.wrapper');
 
 // create global expenseList to be called in functions
-let expenseList = document.createElement('UL');
+var expenseList = document.createElement('UL');
 expenseList.classList.add('myExpList');
 expenseList.setAttribute('id' , 'expenseUL');
 // run generateList on page load
@@ -16,19 +16,19 @@ window.onload = generateList();
 //create input to add new expense name
 const expenseName = document.createElement('input');
 //create an input to add new expense $$ amount
-const inputExpense = document.createElement('input');
+const expenseAmount = document.createElement('input');
 // set expenseName class , id , type
 expenseName.classList.add('inputs');
 expenseName.id = 'expName';
 expenseName.setAttribute('type', 'text');
-//set inputExpense class , id , type
-inputExpense.classList.add('inputs');
-inputExpense.id = 'newExp';
-inputExpense.setAttribute('type', 'text');
+//setexpenseAmount class , id , type
+expenseAmount.classList.add('inputs');
+expenseAmount.id = 'addExp';
+expenseAmount.setAttribute('type', 'text');
 
 // append inputs to parent userExpenses
 budgetWrapper.appendChild(expenseName);
-budgetWrapper.appendChild(inputExpense);
+budgetWrapper.appendChild(expenseAmount);
 
 // Income
 // create form to display income
@@ -38,7 +38,7 @@ const setIncome = document.createElement('input');
 incomeContainer.classList.add('incomeContainer');
 incomeContainer.textContent = 'Income';
 setIncome.classList.add('inputs');
-setIncome.id = 'newInc';
+setIncome.id = 'myIncome';
 setIncome.setAttribute('type', 'text');
 
 budgetWrapper.appendChild(incomeContainer);
@@ -53,31 +53,23 @@ budgetContainer.textContent = 'Budget Balance';
 
 budgetWrapper.appendChild(budgetContainer);
 // reg exp is used in submit functions to check if input is a number between 0-9
-const regEx = /^[0-9]+$/;
+var regEx = /^[0-9]+$/;
 
 ////////////////////////////////////// 
 
 // GENERATE EXPENSE LIST Function
 //create a function to generate a list that will hold expense items
 function generateList() {
-
     itemList = ['test'];
     document.getElementById('expenseUL').appendChild(expenseList);
-    itemList.forEach(renderList);
-
-    function renderList(element, index, arr) {
-        let li = document.createElement('li');
-        li.setAttribute('class','item');
-        expenseList.appendChild(li);
-        li.innerHTML = li.innerHTML + element;
     }
 
     budgetWrapper.appendChild(expenseList);
-};
+
 
 // SUBMIT INCOME Function
 function submitIncome() {
-    newIncome = document.getElementById('newInc').value;
+    newIncome = document.getElementById('myIncome').value;
 
     if (newIncome == 0 || '') {
         alert("Income amount cannot be zero or empty");
@@ -106,36 +98,44 @@ function submitIncome() {
 };
 
 // SUBMIT EXPENSE ITEM Function
+
 function submitExpense() {
-    expItemName = document.getElementById('expName').value;
-    newExpense = document.getElementById('newExp').value;
+    itemName = document.getElementById('expName').value;
+    itemCost = document.getElementById('addExp').value;
 
- if (newExpense == 0 || '') {
+    let li = document.createElement('li');
+    let inputVal = itemName + ' ' + itemCost;
+    let txt = document.createTextNode(inputVal);
+
+    li.appendChild(txt);
+
+    if (inputVal === '') {
+      alert("You must input an expense");
+    } else if (inputVal == 0 || '') {
         alert("Expense amount cannot be zero or empty");
-    } else if (!newExpense.match(regEx)) {
+        //  itemName match regEx checks if itemName is a number
+    } else if (!itemCost.match(regEx)) {
         alert("Expense amount must be a number");
+    } else if (itemName.match(regEx)) {
+            alert("Expense name cannot be a number");
+    // if expense value first num is 0 and next value is > 0,
+    // then slice 0, parseFloat and append remaining number
+    } else if (itemCost[0] == 0 && itemCost[1].match(regEx)) {
+        itemCost.slice[0];
 
-// if expense number's first value is 0 and next value is > 0,
-// slice 0, then parseFloat and append the rest
-    } else if (newExpense[0] == 0 && newExpense[1].match(regEx)) {
-        newExpense.slice[0];
-
-        expenseList.append(expItemName + ' ' + parseFloat(newExpense));
+        expenseList.append(itemName + ' ' + parseFloat(itemCost));
 
         //clear expense input fields
-        expenseName.value = '';
-        expenseName.innerHTML = '';
-        inputExpense.value = '';
-        inputExpense.innerHTML = '';
+        itemName.value = '';
+        itemName.innerHTML = '';
+        itemCost.value = '';
+        itemCost.innerHTML = '';
 
     } else {
-        expenseList.append(expItemName + ' ' + parseFloat(newExpense));
-
-        //clear expense input fields
-        expenseName.value = '';
-        expenseName.innerHTML = '';
-        inputExpense.value = '';
-        inputExpense.innerHTML = '';
-    }
+        document.getElementById('expenseUL').appendChild(li);
+        }
+        itemName.value = '';
+        itemName.innerHTML = '';
+        itemCost.value = '';
+        itemCost.innerHTML = '';
 };
-
