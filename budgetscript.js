@@ -2,6 +2,7 @@
 
 //get div budgetWrapper from index.html
 const budgetWrapper = document.querySelector('.wrapper');
+const dollarSign = toString('$');
 
 // create global expenseList to be called in functions
 var expenseList = document.createElement('UL');
@@ -45,15 +46,15 @@ budgetWrapper.appendChild(incomeContainer);
 budgetWrapper.appendChild(setIncome);
 
 // Budget Balance
-// create a form that will display budget
+// create a form that will display budget balance
 const budgetContainer = document.createElement('form');
 budgetContainer.classList.add('budgetContainer');
 budgetContainer.setAttribute('type' , 'text');
-budgetContainer.textContent = 'Budget Balance';
+budgetContainer.textContent = 'budget balance here';
 
 budgetWrapper.appendChild(budgetContainer);
 // reg exp is used in submit functions to check if input is a number between 0-9
-var regEx = /^[0-9]+$/;
+var regEx = /^[0-9 , '.']+$/
 
 ////////////////////////////////////// 
 
@@ -93,8 +94,10 @@ function submitExpense() {
     itemName = document.getElementById('expName').value;
     itemCost = document.getElementById('addExp').value;
 
+    // create list item element
     let li = document.createElement('li');
-    let inputVal = itemName + ' ' + itemCost;
+    // let the input value for new list items be expense item name and cost inputs
+    let inputVal = itemName + ' ' + '$' + itemCost;
     let txt = document.createTextNode(inputVal);
 
     li.appendChild(txt);
@@ -107,13 +110,15 @@ function submitExpense() {
     } else if (!itemCost.match(regEx)) {
         alert("Expense amount must be a number");
     } else if (itemName.match(regEx)) {
-            alert("Expense name cannot be a number");
+        alert("Expense name cannot be a number");
+    } else if (itemCost.contains('$')) {
+        alert("Expense amount cannot contain special characters.");
     // if expense value first num is 0 and next value is > 0,
     // then slice 0, parseFloat and append remaining number
     } else if (itemCost[0] == 0 && itemCost[1].match(regEx)) {
         itemCost.slice[0];
 
-        expenseList.append(itemName + ' ' + parseFloat(itemCost));
+        document.getElementById('expenseUL').append(li);
 
         //clear expense input fields
         itemName.value = '';
@@ -128,4 +133,10 @@ function submitExpense() {
         itemName.innerHTML = '';
         itemCost.value = '';
         itemCost.innerHTML = '';
+};
+
+function calcBudget() {
+    let userBalance = Number(incomeContainer.value) - Number(expenseTotal.value);
+    budgetContainer.appendChild(userBalance);
+    console.log(userBalance);
 };
