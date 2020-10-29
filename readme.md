@@ -1,3 +1,4 @@
+
 Javascript Mock Budget Calculator Project
 A simple budget calculator that allows user to set their income, create a list of expenses with names & dollar amounts,
 and a visual display of the budget's "balance." The balance is a result of the total expense amount subtracted from the user's income.
