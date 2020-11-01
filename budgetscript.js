@@ -3,6 +3,11 @@
 //get div budgetWrapper from index.html
 const budgetWrapper = document.querySelector('.wrapper');
 
+// regular expressions to check for numbers and special characters
+// used in submit functions to validate input values
+const regExNumbers = /^[0-9] . +$/
+const regExNonWords = /\W|_/
+
 // Expense List Container
 // create global expenseList to be called in functions
 let expenseList = document.createElement('UL');
@@ -56,17 +61,11 @@ budgetWrapper.appendChild(expenseAmount);
 // create a container tol hold total of all expenses,
 // update whenever user appends new expense items to expenseList
 const expenseTotal = document.createElement('form');
-expenseTotal.classList.add('sumAllExpenses');
 expenseTotal.id = 'expenseTotal';
-expenseTotal.setAttribute('type' , 'text');
-expenseTotal.textContent = 'expense total';
+expenseTotal.setAttribute('type' , 'number');
+expenseTotal.value = 0;
 
 budgetWrapper.appendChild(expenseTotal);
-
-// regular expressions to check for numbers and special characters
-// used in submit functions to validate input values
-const regExNumbers = /^[0-9] . +$/
-const regExNonWords = /\W|_/
 
 //////////////////////////////////////
 
@@ -94,6 +93,7 @@ function submitIncome() {
     incomeContainer.innerHTML = '';
     incomeContainer.textContent = '';  
     incomeContainer.append(parseFloat(newIncome));
+    console.log("Income submitted");
 
     // clear income input fields
     setIncome.value = '';
@@ -109,9 +109,10 @@ function submitExpense() {
     // create list item element
     let li = document.createElement('li');
     // let the input value for new list items be expense item name and cost inputs
-    let inputVal = itemName + ' ' + '$' + itemCost;
+    let inputVal = '$' + itemCost + ' ' + itemName;
     let txt = document.createTextNode(inputVal);
     li.appendChild(txt);
+    console.log(txt);
 
     if (inputVal === '') {
       alert("You must input an expense");
@@ -119,7 +120,7 @@ function submitExpense() {
         alert("Expense amount cannot be zero or empty");
 
     } else if (itemCost.match(regExNonWords)) {
-        alert("Expense amount must contain numbers only");
+        alert("Special characters not allowed");
 
     //  itemName match regExNumbers checks if itemName is a number
     } else if (itemName.match(regExNumbers)) {
@@ -129,34 +130,47 @@ function submitExpense() {
     // then slice 0, parseFloat and append remaining number
     } else if (itemCost[0] == 0 && itemCost[1].match(regExNumbers)) {
         itemCost.slice[0];
-
-        document.getElementById('expenseUL').append(li);
-        expenseTotal
-
-        //clear expense input fields
-        itemName.value = '';
-        itemName.innerHTML = '';
-        itemCost.value = '';
-        itemCost.innerHTML = '';
-
-    } else {
+        parseFloat(itemCost);
+        // add new expense cost to Total
+        document.getElementById('expenseTotal').append(itemCost);
+        // add expense name and cost to list
         document.getElementById('expenseUL').appendChild(li);
 
-        // Clear expense total placeholder text
-        document.getElementById('expenseTotal').textContent = '';
-        document.getElementById('expenseTotal').innerHTML = '';
-        
-        // add expense cost to total
-        document.getElementById('expenseTotal').append(itemCost);
-        }
-        itemName.value = '';
-        itemName.innerHTML = '';
-        itemCost.value = '';
-        itemCost.innerHTML = '';
+        //clear expense input fields
+        expenseName.value = '';
+        expenseName.innerHTML = '';
+        expenseAmount.value = '';
+        expenseAmount.innerHTML = '';
+
+    } else {
+        // add expense name and cost to list
+        document.getElementById('expenseUL').appendChild(li);
+        expenseName.value = '';
+        expenseName.innerHTML = '';
+        expenseAmount.value = '';
+        expenseAmount.innerHTML = '';
+    }
+
+    //////// figure out how to keep a running total of expense costs on each submit
+
+        function refreshTotal() {
+            // calls global variable expenseTotal with placeholder value set to 0
+            if (expenseTotal.value == 0) {
+            let x = itemCost;
+            console.log(x); 
+            expenseTotal.append(x);
+            // else if expense total is already populated (not 0)
+            } else if (expenseTotal.value > 0) {
+                expenseTotal.append(x += x);
+                console.log("hellotest");
+            }
+        };
+        refreshTotal();
 };
 
-function calcBudget() {
-    let userBalance = Number(incomeContainer.value) - Number(expenseTotal.value);
-    budgetContainer.appendChild(userBalance.toFixed(2));
+// CALCULATE USER BUDGET Function
+function calculateBudget() {
+    let userBalance = parseFloat(incomeContainer.value) - parseFloat(expenseTotal.value);
+    budgetContainer.append(userBalance);
     console.log(userBalance);
 };
