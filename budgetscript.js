@@ -5,12 +5,12 @@ const budgetWrapper = document.querySelector('.wrapper');
 
 // regular expressions to check for numbers and special characters
 // used in submit functions to validate input values
-const regExNumbers = /^[0-9] . +$/
+const regExNumbers = /^[0-9]|["0-9"] . +$/
 const regExNonWords = /\W|_/
 
 // Expense List Container
 // create global expenseList to be called in functions
-let expenseList = document.createElement('UL');
+const expenseList = document.createElement('UL');
 expenseList.classList.add('expenseList');
 expenseList.setAttribute('id' , 'expenseUL');
 
@@ -51,19 +51,19 @@ expenseName.id = 'expenseName';
 expenseName.setAttribute('type', 'text');
 
 expenseAmount.classList.add('inputs');
-expenseAmount.id = 'addExpense';
-expenseAmount.setAttribute('type', 'text');
+expenseAmount.id = 'expenseAmount';
+expenseAmount.setAttribute('type', 'number');
 
 budgetWrapper.appendChild(expenseName);
 budgetWrapper.appendChild(expenseAmount);
 
 // Expenses Total Amount Container
-// create a container tol hold total of all expenses,
+// create a container to hold total of all expenses,
 // update whenever user appends new expense items to expenseList
-const expenseTotal = document.createElement('form');
-expenseTotal.id = 'expenseTotal';
-expenseTotal.setAttribute('type' , 'number');
-expenseTotal.value = 0;
+totalContainer = document.createElement('div');
+
+budgetWrapper.appendChild(totalContainer);
+totalContainer.id = 'expenseTotal';
 
 budgetWrapper.appendChild(expenseTotal);
 
@@ -104,15 +104,14 @@ function submitIncome() {
 // SUBMIT EXPENSE ITEM Function
 function submitExpense() {
     itemName = document.getElementById('expenseName').value;
-    itemCost = document.getElementById('addExpense').value;
+    itemCost = document.getElementById('expenseAmount').value;
 
     // create list item element
     let li = document.createElement('li');
+
     // let the input value for new list items be expense item name and cost inputs
-    let inputVal = '$' + itemCost + ' ' + itemName;
+    let inputVal = itemCost + ' ' + itemName;
     let txt = document.createTextNode(inputVal);
-    li.appendChild(txt);
-    console.log(txt);
 
     if (inputVal === '') {
       alert("You must input an expense");
@@ -131,10 +130,8 @@ function submitExpense() {
     } else if (itemCost[0] == 0 && itemCost[1].match(regExNumbers)) {
         itemCost.slice[0];
         parseFloat(itemCost);
-        // add new expense cost to Total
-        document.getElementById('expenseTotal').append(itemCost);
         // add expense name and cost to list
-        document.getElementById('expenseUL').appendChild(li);
+        expenseList.appendChild(li);
 
         //clear expense input fields
         expenseName.value = '';
@@ -144,27 +141,34 @@ function submitExpense() {
 
     } else {
         // add expense name and cost to list
-        document.getElementById('expenseUL').appendChild(li);
+        li.appendChild(txt);
+        console.log(txt);
+        expenseList.appendChild(li);
         expenseName.value = '';
         expenseName.innerHTML = '';
         expenseAmount.value = '';
         expenseAmount.innerHTML = '';
     }
 
-    //////// figure out how to keep a running total of expense costs on each submit
-
+        // figure out how to keep a running total of expense costs on each submit
         function refreshTotal() {
-            // calls global variable expenseTotal with placeholder value set to 0
-            if (expenseTotal.value == 0) {
-            let x = itemCost;
-            console.log(x); 
-            expenseTotal.append(x);
-            // else if expense total is already populated (not 0)
-            } else if (expenseTotal.value > 0) {
-                expenseTotal.append(x += x);
-                console.log("hellotest");
+            var amount = parseFloat(itemCost);
+            if (totalContainer.innerText == '') {
+                totalContainer.append(amount);
+                console.log(amount);
+                console.log("test");
             }
-        };
+            else {
+                const oldAmount = parseFloat(totalContainer.textContent);
+                console.log(oldAmount);
+                newAmount = (oldAmount + amount)
+
+                totalContainer.innerHTML = '';
+                totalContainer.append(newAmount);
+                console.log(totalContainer);
+                console.log("test2");       
+        }
+    }
         refreshTotal();
 };
 

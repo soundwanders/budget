@@ -1,17 +1,13 @@
 .wrapper {
   background-color: beige;
+  display: block;
+  height: 60vh;
+  border: 3px solid black;
+  padding: 0px 15px;
 }
 
 .buttons {
   margin: 8%;
-}
-
-.myIncome {
-  height: 25px;
-  width: 150px;
-  border: solid 1px black;
-  margin: 5px 0 5px 0;
-  padding: 10px;
 }
 
 .allExpenses {
