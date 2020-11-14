@@ -5,8 +5,9 @@ const budgetWrapper = document.querySelector('.wrapper');
 
 // regular expressions to check for numbers and special characters
 // used in submit functions to validate input values
-const regExNumbers = /^[0-9]|["0-9"] . +$/
-const regExNonWords = /\W|_/
+var regExNumbers = /^[0-9]|./;
+var regExLetters = /^[A-Za-z]/;
+var regExNonWords = /^\W/
 
 // Expense List Container
 // create global expenseList to be called in functions
@@ -41,9 +42,7 @@ budgetContainer.textContent = 'budget balance here';
 budgetWrapper.appendChild(budgetContainer);
 
 // Expense Name and Amount Inputs
-// create input to add new expense name
 const expenseName = document.createElement('input');
-// create an input to add new expense $$ amount
 const expenseAmount = document.createElement('input');
 // set expenseName and expenseAmount class , id , type
 expenseName.classList.add('inputs');
@@ -75,9 +74,11 @@ function submitIncome() {
 
     if (newIncome == 0 || '') {
         alert("Income amount cannot be zero or empty");
+        return;
         
-    } else if (newIncome.match(regExNonWords)) {
+    } else if (newIncome.match(regExLetters)) {
         alert("Income amount must be a number");
+        return;
             
     // if income's first value is 0 and next value is > 0,
     // then slice 0 and append rest as floating point number
@@ -85,7 +86,7 @@ function submitIncome() {
         incomeContainer.innerHTML = '';
         incomeContainer.textContent = ''; 
 
-        incomeContainer.append(expItemName);
+        //incomeContainer.append(expItemName);
         newIncome.slice[0];
         incomeContainer.append(parseFloat(newIncome));
 
@@ -108,68 +109,83 @@ function submitExpense() {
 
     // create list item element
     let li = document.createElement('li');
-
     // let the input value for new list items be expense item name and cost inputs
-    let inputVal = itemCost + ' ' + itemName;
+    let inputVal = itemName+ ' ' + '$' + itemCost;
     let txt = document.createTextNode(inputVal);
 
-    if (inputVal === '') {
-      alert("You must input an expense");
-    } else if (inputVal == 0 || '') {
-        alert("Expense amount cannot be zero or empty");
+    if (itemName.match(regExNumbers)) {
+            alert("Expense name cannot be a number");
 
-    } else if (itemCost.match(regExNonWords)) {
-        alert("Special characters not allowed");
+        } else if (itemName.match(regExNonWords)) {
+            alert("Expense name cannot contain special characters")
 
-    //  itemName match regExNumbers checks if itemName is a number
-    } else if (itemName.match(regExNumbers)) {
-        alert("Expense name cannot be a number");
+        } else if (itemCost.match(regExLetters)) {
+            alert("Expense cost must be a number")
+            return;
 
-    // if expense value first num is 0 and next value is > 0,
-    // then slice 0, parseFloat and append remaining number
-    } else if (itemCost[0] == 0 && itemCost[1].match(regExNumbers)) {
-        itemCost.slice[0];
-        parseFloat(itemCost);
-        // add expense name and cost to list
-        expenseList.appendChild(li);
+        } else if (itemCost.match(regExNonWords)) {
+            alert("Expense name cannot contain special characters")
 
-        //clear expense input fields
-        expenseName.value = '';
-        expenseName.innerHTML = '';
-        expenseAmount.value = '';
-        expenseAmount.innerHTML = '';
+        // if expense value first num is 0 and next value is > 0,
+        // then slice 0, parseFloat and append remaining number
+        } else if (itemCost[0] == 0 && itemCost[1].match(regExNumbers)) {
+            itemCost.slice[0];
+            parseFloat(itemCost);
+            // add expense name and cost to list
+            expenseList.appendChild(li);
 
-    } else {
-        // add expense name and cost to list
-        li.appendChild(txt);
-        console.log(txt);
-        expenseList.appendChild(li);
-        expenseName.value = '';
-        expenseName.innerHTML = '';
-        expenseAmount.value = '';
-        expenseAmount.innerHTML = '';
-    }
+            //clear expense input fields
+            expenseName.value = '';
+            expenseName.innerHTML = '';
+            expenseAmount.value = '';
+            expenseAmount.innerHTML = '';
+            return;
 
-        // figure out how to keep a running total of expense costs on each submit
-        function refreshTotal() {
-            var amount = parseFloat(itemCost);
-            if (totalContainer.innerText == '') {
-                totalContainer.append(amount);
-                console.log(amount);
-                console.log("test");
-            }
-            else {
-                const oldAmount = parseFloat(totalContainer.textContent);
-                console.log(oldAmount);
-                newAmount = (oldAmount + amount)
+        } else if (inputVal == 0 || '') {
+            alert("Expense amount cannot be zero or empty");
+            return;
 
-                totalContainer.innerHTML = '';
-                totalContainer.append(newAmount);
-                console.log(totalContainer);
-                console.log("test2");       
+        } else {
+            // add expense name and cost to list
+            li.appendChild(txt);
+            console.log(txt);
+            expenseList.appendChild(li);
+            expenseName.value = '';
+            expenseName.innerHTML = '';
+            expenseAmount.value = '';
+            expenseAmount.innerHTML = '';
+            return;
         }
-    }
-        refreshTotal();
+            // running total of expense costs, adding old value and new value on each submit
+            function refreshTotal() {
+                var amount = parseFloat(itemCost);
+
+                if (isNaN(totalContainer.value)) {
+                    alert ("Expense amount is not a number");
+                    totalContainer.innerHTML = '';
+                    totalContainer.text = ''
+
+                } else if (totalContainer.innerText == '') {
+                        totalContainer.append(amount);
+                        console.log(totalContainer.innerText);
+                        console.log("test1");
+                        return;
+
+                } else {
+                    const oldAmount = parseFloat(totalContainer.textContent);
+                    console.log("V Previous Expense Total Amount below V")
+                    console.log(oldAmount);
+                    newAmount = (oldAmount + amount)
+                    console.log("V New Expense Total Amount below V")
+                    console.log(newAmount);
+
+                    totalContainer.innerHTML = '';
+                    totalContainer.append(newAmount);
+                    console.log("test2");       
+                    return;
+            }
+        }
+            refreshTotal();
 };
 
 // CALCULATE USER BUDGET Function

@@ -9,6 +9,8 @@ and a visual display of the budget's "balance." The balance is a result of the t
 
 10/2020 problem: Add list items together and display in total expense container. Need to pull in only the expense amount,
 but the list items value is expense name and cost combined into one li
+// solution: was pulling in an object instead of a string. parseFLoat used to convert to number, then successful addition.
+overwrites old expense total with new expense total value.
 
 10/2020 problem: While succeeding in rejecting any user input for income or expense that are not appropriate, i.e. text instead of numbers
 in the expense amount input, realized I need to find a way to add decimal places and commas.
