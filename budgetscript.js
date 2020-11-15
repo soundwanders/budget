@@ -113,13 +113,10 @@ function submitExpense() {
     let txt = document.createTextNode(inputVal);
 
     if (!itemName.match(regExLetters)) {
-            alert("Expense name can contain only letters");
+            alert("Invalid. Expense name must not be empty and may only contain letters.");
 
     } else if (!itemCost.match(regExNumbers)) {
-        alert("Expense cost must be all numbers");
-
-    } else if (inputVal = 0 || '') {
-        alert("Expense amount cannot be zero or empty");
+        alert("Expense cost must be all numbers and cannot be empty");
 
     // if expense value first num is 0 and next value is > 0,
     // then slice 0, parseFloat and append remaining number
@@ -150,16 +147,24 @@ function submitExpense() {
             function refreshTotal() {
                 var amount = parseFloat(itemCost);
 
-                if (totalContainer.innerText == null || NaN) {
-                    alert ("Expense amount is not a number");
-                    totalContainer.innerHTML = '';
-                    totalContainer.text = ''
-
-                } else if (totalContainer.innerText == '') {
+            if (totalContainer.innerText == '') {
                         totalContainer.append(amount);
+        
                         console.log(totalContainer.innerText);
                         console.log("test1");
                         return;
+
+                        ///////////////////////////////////////////////////////////////
+
+                        // BROKEN ELSE IF BELOW ... NEED TO CHECK IF EXPENSE TOTAL isNaN ,
+                        // IF TRUE EXIT FUNCTION BUT DO NOT DELETE EXPENSE TOTAL
+
+                        ///////////////////////////////////////////////////////////////
+
+                } else if (isNaN(totalContainer)) {
+                    alert ("Expense amount is not a number");
+                    totalContainer.innerHTML = '';
+                    totalContainer.text = ''
 
                 } else {
                     const oldAmount = parseFloat(totalContainer.textContent);
@@ -171,6 +176,7 @@ function submitExpense() {
 
                     totalContainer.innerHTML = '';
                     totalContainer.append(newAmount);
+        
                     console.log("test2");       
                     return;
             }
