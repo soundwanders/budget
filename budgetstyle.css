@@ -1,13 +1,22 @@
+HTML {
+  background-color: darkslategrey;
+  background-blend-mode: overlay;
+}
+
 .wrapper {
-  background-color: beige;
+  background-color: ivory;
   display: block;
-  height: 60vh;
-  border: 3px solid black;
+  height: 80vh;
+  width: 60%;
+  position: fixed;
+  border: 6px solid cornsilk;
   padding: 0px 15px;
+  margin: 5vh 50vh;
 }
 
 .buttons {
-  margin: 8%;
+  bottom: 10vh;
+  left: 20vh;
 }
 
 .allExpenses {
@@ -19,7 +28,7 @@
 }
 
 .myBudget {
-  height: 25px;
+  height: 27px;
   width: 150px;
   border: solid 1px black;
   margin: 5px 0 5px 0;
@@ -27,14 +36,54 @@
 }
 
 .inputs {
-  position: relative;
+  position: absolute;
   height: 15px;
   width: 150px;
   border: solid 1px black;
-  margin: 5px 0 5px 0;
   padding: 10px;
 }
 
 #newExp {
   margin-left: 10%;
+}
+
+
+#expenseName {
+  background-color: lightcyan;
+  text-align: center;
+  font-size: large;
+  margin-right: 5vh;
+  float: right;
+  left: 20vh;
+  top: 60vh;
+}
+
+#expenseAmount {
+  background-color: lightcyan;
+  text-align: center;
+  font-size: large;
+  margin-right: 5vh;
+  float: right;
+  left: 55vh;
+  top: 60vh;
+}
+
+#incomeBox {
+  background-color: honeydew;
+  position: relative;
+  top: 15vh;
+  left: 17vh;
+}
+
+#expenseButton {
+  position: relative;
+  left: 45vh;
+  top: 60vh;
+  padding: 5px 5px;
+}
+
+#expenseTotal {
+  position: relative;
+  left: 15vh;
+  top: 20vh;
 }
