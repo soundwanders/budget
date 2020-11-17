@@ -17,8 +17,8 @@ const expenseList = document.createElement('UL');
     budgetWrapper.appendChild(expenseList);
 
 // Income Container
-// create form to display income
-const incomeContainer = document.createElement('form')
+// create div to display income
+const incomeContainer = document.createElement('div')
     incomeContainer.classList.add('incomeContainer');
     incomeContainer.id = 'displayIncome';
     incomeContainer.textContent = 'Income';
@@ -37,7 +37,7 @@ const setIncome = document.createElement('input');
 const budgetContainer = document.createElement('form');
     budgetContainer.classList.add('budgetContainer');
     budgetContainer.setAttribute('type' , 'text');
-    budgetContainer.textContent = '0';
+    budgetContainer.textContent = '';
 
     budgetWrapper.appendChild(budgetContainer);
 
@@ -47,21 +47,21 @@ const expenseName = document.createElement('input');
     expenseName.id = 'expenseName';
     expenseName.setAttribute('type', 'text');
 
+    budgetWrapper.appendChild(expenseName);
+
 const expenseAmount = document.createElement('input');
     expenseAmount.classList.add('inputs');
     expenseAmount.id = 'expenseAmount';
     expenseAmount.setAttribute('type', 'text');
 
-    budgetWrapper.appendChild(expenseName);
     budgetWrapper.appendChild(expenseAmount);
 
 // Expenses Total Amount Container
 // create a container to hold total of all expenses,
 // update whenever user adds a new expense item to expenseList
 totalContainer = document.createElement('div');
-
 budgetWrapper.appendChild(totalContainer);
-totalContainer.id = 'expenseTotal';
+totalContainer.id = 'totalContainer';
 
 budgetWrapper.appendChild(expenseTotal);
 
@@ -80,7 +80,7 @@ function submitIncome() {
         return;
             
     // if income's first value is 0 and next value is > 0,
-    // then slice 0 and append rest as floating point number
+    // then slice all 0 until value reads > 0
     } else if (newIncome[0] == 0 && newIncome[1].match(regExNumbers)) {
         incomeContainer.innerHTML = '';
         incomeContainer.textContent = ''; 
@@ -92,7 +92,7 @@ function submitIncome() {
     } else {
     incomeContainer.innerHTML = '';
     incomeContainer.textContent = '';
-    monthlyIncome = (parseFloat(newIncome) + ' ' + '/ month');
+    monthlyIncome = ('$' + parseFloat(newIncome) + ' ' + '/ month');
 
     incomeContainer.append(monthlyIncome);
     console.log("Income submitted");

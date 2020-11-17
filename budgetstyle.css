@@ -3,36 +3,19 @@ HTML {
   background-blend-mode: overlay;
 }
 
+form {
+  color:  darkslategrey;
+}
+
 .wrapper {
   background-color: ivory;
+  position: fixed;
   display: block;
   height: 80vh;
   width: 60%;
-  position: fixed;
   border: 6px solid cornsilk;
   padding: 0px 15px;
-  margin: 5vh 50vh;
-}
-
-.buttons {
-  bottom: 10vh;
-  left: 20vh;
-}
-
-.allExpenses {
-  height: 25px;
-  width: 150px;
-  border: solid 1px black;
-  margin: 5px 0 5px 0;
-  padding: 10px;
-}
-
-.myBudget {
-  height: 27px;
-  width: 150px;
-  border: solid 1px black;
-  margin: 5px 0 5px 0;
-  padding: 10px;
+  margin: 5vh 40vh;
 }
 
 .inputs {
@@ -43,10 +26,8 @@ HTML {
   padding: 10px;
 }
 
-#newExp {
-  margin-left: 10%;
-}
 
+/* Expenses */
 
 #expenseName {
   background-color: lightcyan;
@@ -62,28 +43,44 @@ HTML {
   background-color: lightcyan;
   text-align: center;
   font-size: large;
-  margin-right: 5vh;
+  margin-left: 5vh;
   float: right;
-  left: 55vh;
+  left: 50vh;
   top: 60vh;
-}
-
-#incomeBox {
-  background-color: honeydew;
-  position: relative;
-  top: 15vh;
-  left: 17vh;
 }
 
 #expenseButton {
   position: relative;
   left: 45vh;
   top: 60vh;
-  padding: 5px 5px;
+  padding: 6px 6px;
 }
 
+
 #expenseTotal {
-  position: relative;
+  float: right;
   left: 15vh;
   top: 20vh;
+}
+
+/* Income*/
+
+#incomeBox {
+  background-color: honeydew;
+  float: right;
+  left: 20vh;
+  top: 48vh;
+}
+
+#incomeDisplay {
+  float: right;
+  left: 10%;
+  top: 30vh;
+}
+
+#incomeButton {
+  position: relative;
+  left: 67vh;
+  top: 48vh;
+  padding: 6px 6px;
 }
