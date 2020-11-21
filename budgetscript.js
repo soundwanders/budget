@@ -3,64 +3,63 @@
 //get div budgetWrapper from index.html -- frames budget display
 const budgetWrapper = document.querySelector('.wrapper');
 
-// regular expressions to check for numbers and special characters
-// used in submit functions to validate input values
+// regular expressions to check for numbers, letters
+// used in submit functions to validate user input values
 regExNumbers = /^\d+$/;
-regExLetters = /^[A-Za-z]/;
-
-// Expense List Container
-// create global expenseList to be called in functions
-const expenseList = document.createElement('UL');
-    expenseList.setAttribute('id' , 'expenseL');
-
-    budgetWrapper.appendChild(expenseList);
+regExLetters = /^[A-Z a-z]/;
 
 // Income Container
 // create div to display income
-const incomeContainer = document.createElement('div')
-    incomeContainer.classList.add('incomeContainer');
-    incomeContainer.id = 'incomeDisplay';
-    incomeContainer.textContent = ' ';
+const incomeContainer = document.createElement('form')
+    incomeContainer.id = 'incomeContainer';
+    incomeContainer.textContent = '';
 
-// Input for User Income
+
+// Income Input Box
 const setIncome = document.createElement('input');
     setIncome.classList.add('inputs');
     setIncome.id = 'incomeBox';
     setIncome.setAttribute('type', 'text');
 
-    budgetWrapper.appendChild(incomeContainer);
-    budgetWrapper.appendChild(setIncome);
+budgetWrapper.appendChild(incomeContainer);
+budgetWrapper.appendChild(setIncome);
 
 // Budget Balance Container
 // create a form that will display budget balance
 const budgetContainer = document.createElement('form');
-    budgetContainer.classList.add('budgetContainer');
+    budgetContainer.id = ('budgetContainer');
     budgetContainer.setAttribute('type' , 'text');
     budgetContainer.textContent = '';
 
-    budgetWrapper.appendChild(budgetContainer);
+budgetWrapper.appendChild(budgetContainer);
 
-// Expense Name and Amount Inputs
+// Expense Name and Amount Input Boxes
 const expenseName = document.createElement('input');
     expenseName.classList.add('inputs');
     expenseName.id = 'expenseName';
     expenseName.setAttribute('type', 'text');
 
-    budgetWrapper.appendChild(expenseName);
+budgetWrapper.appendChild(expenseName);
 
 const expenseAmount = document.createElement('input');
     expenseAmount.classList.add('inputs');
     expenseAmount.id = 'expenseAmount';
     expenseAmount.setAttribute('type', 'text');
 
-    budgetWrapper.appendChild(expenseAmount);
+budgetWrapper.appendChild(expenseAmount);
+
+// Expense List Container
+// create global expenseList to be called in functions
+const expenseList = document.createElement('UL');
+    expenseList.setAttribute('id' , 'expenseL');
+
+budgetWrapper.appendChild(expenseList);
 
 // Expenses Total Amount Container
-// create a container to hold total of all expenses,
-// update whenever user adds a new expense item to expenseList
-totalContainer = document.createElement('div');
-budgetWrapper.appendChild(totalContainer);
-totalContainer.id = 'totalContainer';
+// create a container to hold total of all expenses ,
+// then update whenever user adds a new expense item to expenseList
+const totalContainer = document.createElement('div');
+    totalContainer.id = 'totalContainer';
 
 budgetWrapper.appendChild(totalContainer);
 
@@ -89,8 +88,8 @@ function submitIncome() {
         incomeContainer.append(parseFloat(newIncome));
 
     } else {
-    incomeContainer.innerHTML = ' ';
-    incomeContainer.textContent = ' ';
+    incomeContainer.innerHTML = '';
+    incomeContainer.textContent = '';
     monthlyIncome = ('$' + parseFloat(newIncome) + ' ' + '/ month');
 
     incomeContainer.append(monthlyIncome);
@@ -110,7 +109,7 @@ function submitExpense() {
     // create list item element
     let li = document.createElement('li');
     // set new list items to be expense item name / cost inputs
-    var inputVal = itemName+ ' ' + '$' + itemCost;
+    const inputVal = '$' + itemCost + ' ' + itemName;
     let txt = document.createTextNode(inputVal);
 
     if (!itemName.match(regExLetters)) {
@@ -129,7 +128,7 @@ function submitExpense() {
             expenseName.innerHTML = '';
             expenseAmount.value = '';
             expenseAmount.innerHTML = '';
-            return;
+        return;
 
     // if expense value first num is 0 and next value is != 0 ,
     // then slice 0, parseFloat and append remaining number
@@ -157,7 +156,7 @@ function submitExpense() {
     }
             // REFRESH TOTAL Function
             // nested in SubmitExpense Function
-            // running total of expense costs, new value plus old value on each submit
+            // running total of sum of all expense costs
         function refreshTotal() {
                 let amount = parseFloat(itemCost);
 
@@ -166,37 +165,38 @@ function submitExpense() {
                 return;
             
             } else if (totalContainer.innerText == '') {
-                        totalContainer.append(amount);
+                totalContainer.append(amount);
         
-                        console.log(totalContainer.innerText);
-                        console.log("test1");
+                console.log(totalContainer.innerText);
+                console.log("test1");
 
-                } else if (isNaN(totalContainer.innerText)) {
-                    alert ("Expense amount is not a number");
-                    totalContainer.innerHTML = '';
-                    totalContainer.text = ''
-                    return;
+            } else if (isNaN(totalContainer.innerText)) {
+                alert ("Expense amount is not a number");
+                totalContainer.innerHTML = '';
+                totalContainer.text = ''
+                return;
 
-                } else {
-                    const oldAmount = parseFloat(totalContainer.innerText);
-                    console.log("V Previous Expense Total Amount below V")
-                    console.log(oldAmount);
+            } else {
+                const oldAmount = parseFloat(totalContainer.innerText);
+                console.log("V Previous Expense Total Amount below V");
+                console.log(oldAmount);
 
-                    newAmount = (oldAmount + amount)
-                    console.log("V New Expense Total Amount below V")
-                    console.log(newAmount);
+                const newAmount = ('$' + ' ' + (oldAmount + amount));
+                newAmount.id = 'expenseDisplay';
+                console.log("V New Expense Total Amount below V");
+                console.log(newAmount);
 
-                    totalContainer.innerHTML = '';
-                    totalContainer.append(newAmount);
-                    console.log("test2");     
+                totalContainer.innerHTML = '';
+                totalContainer.append(newAmount);
+                console.log("test2");     
             }
         }
-            refreshTotal();
+        refreshTotal();
 };
 
 // CALCULATE USER BUDGET Function, needs work but the gist is ...
 function calculateBudget() {
-    let userBalance = incomeContainerValue - totalContainerValue; // convert both to numbers and subtract
+    const userBalance = incomeContainerValue - totalContainerValue; // convert both to numbers and subtract
     budgetContainer.innerText = '';  // clear old value
     budgetContainer.append(userBalance); //append new value
     console.log(userBalance);
