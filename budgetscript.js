@@ -109,7 +109,7 @@ function submitExpense() {
     // create list item element
     let li = document.createElement('li');
     // set new list items to be expense item name / cost inputs
-    const inputVal = '$' + itemCost + ' ' + itemName;
+    const inputVal = ('$' + itemCost + ' ' + itemName);
     let txt = document.createTextNode(inputVal);
 
     if (!itemName.match(regExLetters)) {
@@ -158,7 +158,7 @@ function submitExpense() {
             // nested in SubmitExpense Function
             // running total of sum of all expense costs
         function refreshTotal() {
-                let amount = parseFloat(itemCost);
+                let amount = (parseFloat(itemCost));
 
             if (isNaN(amount)) {
                 alert("Amount is not a number");
@@ -181,7 +181,7 @@ function submitExpense() {
                 console.log("V Previous Expense Total Amount below V");
                 console.log(oldAmount);
 
-                const newAmount = ('$' + ' ' + (oldAmount + amount));
+                const newAmount = (oldAmount + amount);
                 newAmount.id = 'expenseDisplay';
                 console.log("V New Expense Total Amount below V");
                 console.log(newAmount);
@@ -196,8 +196,16 @@ function submitExpense() {
 
 // CALCULATE USER BUDGET Function, needs work but the gist is ...
 function calculateBudget() {
-    const userBalance = incomeContainerValue - totalContainerValue; // convert both to numbers and subtract
+    income = incomeContainer.innerText;
+    income.slice[0];
+    parseFloat(income);
+
+    total = totalContainer.innerText;
+    parseFloat(total);
+
+    const userBalance = (income + total); // convert both to numbers and subtract
     budgetContainer.innerText = '';  // clear old value
     budgetContainer.append(userBalance); //append new value
+
     console.log(userBalance);
 };
