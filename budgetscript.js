@@ -11,8 +11,7 @@ regExLetters = /^[A-Za-z]/;
 // Expense List Container
 // create global expenseList to be called in functions
 const expenseList = document.createElement('UL');
-    expenseList.classList.add('expenseList');
-    expenseList.setAttribute('id' , 'expenseUL');
+    expenseList.setAttribute('id' , 'expenseL');
 
     budgetWrapper.appendChild(expenseList);
 
@@ -20,8 +19,8 @@ const expenseList = document.createElement('UL');
 // create div to display income
 const incomeContainer = document.createElement('div')
     incomeContainer.classList.add('incomeContainer');
-    incomeContainer.id = 'displayIncome';
-    incomeContainer.textContent = 'Income';
+    incomeContainer.id = 'incomeDisplay';
+    incomeContainer.textContent = ' ';
 
 // Input for User Income
 const setIncome = document.createElement('input');
@@ -63,9 +62,9 @@ totalContainer = document.createElement('div');
 budgetWrapper.appendChild(totalContainer);
 totalContainer.id = 'totalContainer';
 
-budgetWrapper.appendChild(expenseTotal);
+budgetWrapper.appendChild(totalContainer);
 
-//////////////////////////////////////
+//////////////////////////////////////////////////
 
 // SUBMIT INCOME Function
 function submitIncome() {
@@ -82,16 +81,16 @@ function submitIncome() {
     // if income's first value is 0 and next value is > 0,
     // then slice all 0 until value reads > 0
     } else if (newIncome[0] == 0 && newIncome[1].match(regExNumbers)) {
-        incomeContainer.innerHTML = '';
-        incomeContainer.textContent = ''; 
+        incomeContainer.innerHTML = ' ';
+        incomeContainer.textContent = ' '; 
 
         //incomeContainer.append(expItemName);
         newIncome.slice[0];
         incomeContainer.append(parseFloat(newIncome));
 
     } else {
-    incomeContainer.innerHTML = '';
-    incomeContainer.textContent = '';
+    incomeContainer.innerHTML = ' ';
+    incomeContainer.textContent = ' ';
     monthlyIncome = ('$' + parseFloat(newIncome) + ' ' + '/ month');
 
     incomeContainer.append(monthlyIncome);
@@ -159,7 +158,7 @@ function submitExpense() {
             // REFRESH TOTAL Function
             // nested in SubmitExpense Function
             // running total of expense costs, new value plus old value on each submit
-            function refreshTotal() {
+        function refreshTotal() {
                 let amount = parseFloat(itemCost);
 
             if (isNaN(amount)) {
