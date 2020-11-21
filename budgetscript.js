@@ -51,7 +51,7 @@ budgetWrapper.appendChild(expenseAmount);
 // Expense List Container
 // create global expenseList to be called in functions
 const expenseList = document.createElement('UL');
-    expenseList.setAttribute('id' , 'expenseL');
+    expenseList.setAttribute('id' , 'expenseUL');
 
 budgetWrapper.appendChild(expenseList);
 
@@ -62,6 +62,16 @@ const totalContainer = document.createElement('div');
     totalContainer.id = 'totalContainer';
 
 budgetWrapper.appendChild(totalContainer);
+
+// Add class 'Selected' to list items when clicked.
+const list = document.querySelector('UL');
+list.addEventListener('click', function(ev) {
+
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('selected');
+  }
+
+}, false);
 
 //////////////////////////////////////////////////
 
@@ -174,7 +184,6 @@ function submitExpense() {
                 alert ("Expense amount is not a number");
                 totalContainer.innerHTML = '';
                 totalContainer.text = ''
-                return;
 
             } else {
                 const oldAmount = parseFloat(totalContainer.innerText);
@@ -183,7 +192,7 @@ function submitExpense() {
 
                 const newAmount = (oldAmount + amount);
                 newAmount.id = 'expenseDisplay';
-                console.log("V New Expense Total Amount below V");
+                console.log("V Updated Expense Total Amount below V");
                 console.log(newAmount);
 
                 totalContainer.innerHTML = '';
@@ -194,18 +203,24 @@ function submitExpense() {
         refreshTotal();
 };
 
-// CALCULATE USER BUDGET Function, needs work but the gist is ...
+// CALCULATE USER BUDGET Function
 function calculateBudget() {
-    income = incomeContainer.innerText;
-    income.slice[0];
-    parseFloat(income);
+    income = parseFloat(newIncome);
 
     total = totalContainer.innerText;
     parseFloat(total);
 
-    const userBalance = (income + total); // convert both to numbers and subtract
+    newTotal = ('$' + (income - total));
+
+    const userBalance = (newTotal); 
     budgetContainer.innerText = '';  // clear old value
-    budgetContainer.append(userBalance); //append new value
+    budgetContainer.append(userBalance); // append new value
 
     console.log(userBalance);
 };
+
+// DELETE EXPENSE Function .... deletes entire UL needs fix
+function deleteExpense() {
+    itemSelect = document.getElementsByClassName('selected');
+    expenseUL.remove(itemSelect);
+}
