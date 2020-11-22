@@ -1,6 +1,6 @@
 // budget app.js
 
-// get div budgetWrapper from index.html -- frames budget display
+// get div budgetWrapper, which acts as a canvas for UI design elements
 const budgetWrapper = document.querySelector('.wrapper');
 
 // regular expressions to check for numbers, letters
@@ -70,10 +70,10 @@ getList.addEventListener('click', function (ev) {
   }
 }, false);
 
-/// ///////////////////////////////////////////////
+//////////////////////////////////////////////////
 
 // SUBMIT INCOME Function
-function submitIncome () {
+function submitIncome() {
   newIncome = document.getElementById('incomeBox').value;
 
   if (newIncome == 0 || '') {
@@ -105,7 +105,7 @@ function submitIncome () {
 };
 
 // SUBMIT EXPENSE ITEM Function
-function submitExpense () {
+function submitExpense() {
   itemName = document.getElementById('expenseName').value;
   itemCost = document.getElementById('expenseAmount').value;
 
@@ -159,10 +159,11 @@ function submitExpense () {
     expenseAmount.value = '';
     expenseAmount.innerHTML = '';
   }
+  
   // REFRESH TOTAL Function
   // nested in SubmitExpense Function
   // running total of sum of all expense costs
-  (function refreshTotal() {
+  function refreshTotal(){
     const amount = (parseFloat(itemCost));
 
     if (isNaN(amount)) {
@@ -192,7 +193,8 @@ function submitExpense () {
       totalContainer.append(newAmount);
       console.log('test2');
     }
-  })();
+  }
+  refreshTotal();
 };
 
 // CALCULATE USER BUDGET Function
@@ -211,14 +213,11 @@ function calculateBudget() {
 };
 
 // DELETE EXPENSE Function .... deletes entire UL needs fix
-function deleteExpense () {
-  const li = document.getElementsByClassName('selected');
-  li.remove();
-  li[0].innerHTML = "";   
-  
+function deleteExpense() {
+  const liSelect = document.getElementsByClassName("selected");
+  while (liSelect.length > 0) liSelect[0].remove();
 };
 
-function hardReset() {
+function clearTotalAmount() {
   totalContainer.innerHTML = '';
-  totalContainer.textContent = '';
-}
+};
