@@ -39,8 +39,8 @@ UL {
   top: 15vh;
   padding: 2px 10px;
   height: 30%;
-  width: 15%;
-  border: 4px solid black;
+  width: 40%;
+  border: 2px solid rgb(54, 81, 131);
   overflow: hidden; 
   overflow-y: scroll;
   white-space: nowrap;
@@ -48,7 +48,7 @@ UL {
 
 li {
   list-style: none;
-  padding: 2px;
+  padding: 5px;
 }
 
 UL li.selected {
@@ -64,7 +64,7 @@ UL li.selected {
   margin-right: 5vh;
   float: right;
   left: 20vh;
-  top: 60vh;
+  top: 48vh;
 }
 
 #expenseAmount {
@@ -73,20 +73,22 @@ UL li.selected {
   margin-left: 5vh;
   float: right;
   left: 50vh;
-  top: 60vh;
+  top: 48vh;
 }
 
 #totalContainer {
   position: absolute;
   display: inline-block;
-  left: 55vh;
-  top: 32vh;
+  left: 20vh;
+  top: 2vh;
   padding: 2px 10px;
   height: 11%;
-  width: 12%;
-  border: 4px solid black;
+  width: 10%;
+  border: 3px solid black;
   text-align: center;
   font-size: 16px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* Income */
@@ -95,77 +97,134 @@ UL li.selected {
   background-color: honeydew;
   float: right;
   left: 55vh;
-  top: 48vh;
+  top: 60vh;
 }
 
 #incomeContainer {
   position: absolute;
   left: 20vh;
-  top: 48vh;
-  padding: 7px 20px;
-  border: 3px dotted purple;
+  top: 60vh;
+  padding: 8px 10px;
+  border: 3px dotted rgb(87, 10, 87);
+  max-width: 145px;
+  min-width: 145px;
+  max-height: 18px;
+  min-height: 18px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
 }
 
 #incomeContainer:empty {
-  border: none;
+  border: 1px solid black;
+  max-width: 150px;
+  min-width: 150px;
+  min-height: 21px;
+  padding: 7px 10px;
 }
 
 #budgetContainer {
   position: absolute;
   display: inline-block;
-  left: 55vh;
-  top: 17vh;
+  left: 60vh;
+  top: 2vh;
   padding: 2px 10px;
   height: 11%;
   width: 12%;
-  border: 4px solid black;
+  border: 3px solid black;
   text-align: center;
   font-size: 16px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* BUTTONS */
 
-#expenseButton {
-  background-color: silver;
+.btn {
+  background-color: rgb(171, 200, 253);
+}
+
+#calculateBudget {
   position: absolute;
   left: 58%;
-  top: 60vh;
+  top: 5vh;
+  padding: 6px 7px;
+  margin: 0px 60px 0px 20px;
+}
+
+#expenseButton {
+  position: absolute;
+  left: 58%;
+  top: 48vh;
   padding: 6px 6px;
   margin: 0px 60px 0px 20px;
 }
 
 #incomeButton {
-  background-color: silver;
   position: absolute;
   left: 58%;
-  top: 48vh;
+  top: 60vh;
   padding: 6px 8px;
   margin: 0px 60px 0px 20px;
 }
 
-#balanceBudget {
-  background-color: silver;
-  position: absolute;
-  left: 58%;
-  top: 18vh;
-  padding: 6px 7px;
-  margin: 0px 60px 0px 20px;
-}
-
 #clearExpense {
-  background-color: silver;
   position: absolute;
   left: 58%;
   top: 28vh;
-  padding: 6px 7px;
+  padding: 6px 10px;
   margin: 0px 60px 0px 20px;
 }
 
 #hardReset {
-  background-color: silver;
   position: absolute;
-  left: 58%;
-  top: 38vh;
-  padding: 6px 27px;
+  left: 28%;
+  top: 5vh;
+  padding: 6px 5px;
   margin: 0px 60px 0px 20px;
+}
+
+/* Three Colored Columns for UI Design */
+#columnone {
+  position: absolute;
+  border: 3px solid rgb(111, 236, 236);
+  background-color: rgb(111, 236, 236);
+  left: 99%;
+  top: -6px;
+  min-height: 99%;
+  max-height: 99%;
+  padding: 6.5px 5px;
+}
+
+#columntwo {
+  position: absolute;
+  border: 3px solid rgb(111, 236, 236);
+  background-color: rgb(111, 236, 236);
+  left: 97%;
+  top: -6px;
+  min-height: 99%;
+  max-height: 99%;
+  padding: 6.5px 5px;
+}
+
+#columnthree {
+  position: absolute;
+  border: 3px solid rgb(111, 236, 236);
+  background-color: rgb(111, 236, 236);
+  left: 95%;
+  top: -6px;
+  min-height: 99%;
+  max-height: 99%;
+  padding: 6.5px 5px;
+}
+
+#columnfour {
+  position: absolute;
+  border: 3px solid rgb(171, 200, 253);
+  background-color: rgb(171, 200, 253);
+  left: 91%;
+  top: -6px;
+  min-height: 99%;
+  max-height: 99%;
+  padding: 6.5px 15px;
 }

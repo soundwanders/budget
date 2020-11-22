@@ -3,7 +3,7 @@
 <head>
         <meta charset="UTF-8">
         <meta name="description" content="budget">
-        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="keywords" content="HTML, CSS, JavaScript, Budget">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/budgetstyle.css">
 </head>
@@ -16,20 +16,25 @@ Budget
 <!-- need to create UI to hold all input from user, JS Div containers to hold budget figures-->
 <div class = "wrapper">
 
-<form id = "expenseUL">
-</form>
+    <div id = "columnone"> </div>
+    <div id = "columntwo"> </div>
+    <div id = "columnthree"> </div>
+    <div id = "columnfour"> </div>
 
-<!-- functional buttons to operate the page -->
+    <form id = "expenseUL">
+    </form>
+
+    <!-- functional buttons to operate the page -->
     <div class="buttons">
-        <button id = "balanceBudget"  onclick="calculateBudget()">Calculate Budget</button>
+        <button class = "btn" id = "calculateBudget"  onclick = "calculateBudget()">Calculate Budget</button>
 
-        <button id = "incomeButton" onclick="submitIncome()">Submit Income</button>
+        <button class = "btn" id = "incomeButton" onclick = "submitIncome()">Submit Income</button>
 
-        <button id = "expenseButton" onclick="submitExpense()">Submit Expense</button>
+        <button class = "btn" id = "expenseButton" onclick = "submitExpense()">Submit Expense</button>
 
-        <button id = "clearExpense"  onclick="deleteExpense()">Delete Expense</button>
+        <button class = "btn" id = "clearExpense"  onclick = "deleteExpense()">Delete Expense</button>
 
-        <button id = "hardReset">Reset All</button>
+        <button class = "btn" id = "hardReset">Reset Total</button>
     </div>
 </div>
 
