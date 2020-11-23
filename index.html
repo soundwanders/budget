@@ -7,15 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/budgetstyle.css">
 </head>
+
 <title>
 Budget
 </title>
 
 <body>
-
-<!-- need to create UI to hold all input from user, JS Div containers to hold budget figures-->
 <div class = "wrapper">
 
+    <!-- colored columns for design -->
     <div id = "columnone"> </div>
     <div id = "columntwo"> </div>
     <div id = "columnthree"> </div>
@@ -24,17 +24,22 @@ Budget
     <!-- buttons used to activate JS functions-->
     <div class="buttons">
         <button class = "btn" id = "calculateBudget"  onclick = "calculateBudget()">Calculate Budget</button>
+        <div class = "hide" id ="calc">Refresh User Budget</div>
 
         <button class = "btn" id = "incomeButton" onclick = "submitIncome()">Submit Income</button>
+        <div class = "hide" id ="inc">Submit Monthly Income</div>
 
         <button class = "btn" id = "expenseButton" onclick = "submitExpense()">Submit Expense</button>
+        <div class = "hide" id ="exp">Submit New Expense</div>
 
         <button class = "btn" id = "removeExpense"  onclick = "deleteExpense()">Delete Expense</button>
+        <div class = "hide" id ="del">Remove Selected Item</div>
 
-        <button class = "btn" id = "clearExpenseTotal" onclick = "clearTotalAmount()">Clear Total Amount</button>
+        <button class = "btn" id = "clearExpenseTotal" onclick = "clearTotalAmount()">Reset Costs</button>
+        <div class = "hide" id ="clear">Reset Amount</div>
     </div>
-</div>
 
+</div>
 </body>
 
 <script src = "/budgetscript.js"></script>

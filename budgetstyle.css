@@ -1,6 +1,5 @@
 HTML {
   background-color:darkslategrey;
-  background-blend-mode: overlay;
 }
 
 form {
@@ -42,7 +41,7 @@ UL {
   padding: 2px 10px;
   height: 30%;
   width: 40%;
-  border: 3px solid rgb(54, 81, 131);
+  border: 2px solid rgb(54, 81, 131);
   overflow: hidden; 
   overflow-y: scroll;
   white-space: nowrap;
@@ -74,7 +73,7 @@ UL li.selected {
   text-align: center;
   margin-left: 5vh;
   float: right;
-  left: 55vh;
+  left: 54.8vh;
   top: 48vh;
 }
 
@@ -86,7 +85,7 @@ UL li.selected {
   padding: 2px 10px;
   height: 11%;
   width: 10%;
-  border: 3px solid black;
+  border: 2px solid rgb(54, 81, 131);
   text-align: center;
   font-size: 16px;
   overflow: hidden;
@@ -133,7 +132,7 @@ UL li.selected {
   padding: 2px 10px;
   height: 11%;
   width: 12%;
-  border: 3px solid black;
+  border: 2px solid rgb(54, 81, 131);
   text-align: center;
   font-size: 16px;
   overflow: hidden;
@@ -145,12 +144,35 @@ UL li.selected {
 .btn {
   background-color: rgb(182, 232, 255);
   color: black;
-  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   opacity: 90%;
+  min-height: 40px;
+  max-height: 40px;
+  font-size: 16px;
 }
 
 .btn:hover {
   background-color: rgb(126, 214, 255);
+}
+
+.hide {
+  display: none;
+  border: 1px solid black;
+  min-height: 10px;
+  max-height: 30px;
+  min-width: 8em;
+  max-width: 8em;
+  padding: 5px;
+  text-align: center;
+  float: right;
+  right: 13%;
+}
+
+.btn:hover + .hide {
+  position: relative;
+  display: block;
+  color: black;
+  font-size: 10px;
 }
 
 #calculateBudget {
@@ -187,7 +209,7 @@ UL li.selected {
 
 #clearExpenseTotal {
   position: absolute;
-  left: 26%;
+  left: 27%;
   top: 5vh;
   padding: 6px 5px;
   margin: 0px 60px 0px 20px;
@@ -243,3 +265,26 @@ UL li.selected {
 }
 
 /* rgb(171, 200, 253); --- lavender-ish purple */
+
+/* Positioning the pop-up user tips on mouse hover over buttons */
+
+#calc {
+  top: 5vh;
+}
+
+#exp {
+  top: 48vh;
+}
+
+#inc {
+  top: 60vh;
+}
+
+#del {
+  top: 28vh;
+}
+
+#clear {
+  top: 0;
+  right: 88vh;  
+}
