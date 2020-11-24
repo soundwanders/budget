@@ -8,24 +8,28 @@ form {
 
 .wrapper {
   background-color: ivory;
-  position: fixed;
+  position: absolute;
+  min-width: 55%;
+  max-width: 55%;
   display: block;
   height: 80vh;
-  width: 60%;
-  border: 6px solid cornsilk;
   padding: 0px 15px;
   margin: 5vh 40vh;
+  border: 6px solid cornsilk;
+  border-radius: 2%;
 }
 
 .inputs {
   position: absolute;
   min-height: 18px;
   max-height: 18px;
-  text-align: center;
   width: 150px;
-  border: solid 1px black;
   padding: 10px;
+  text-align: center;
   font-size: medium;
+  border: solid 3px rgb(156, 199, 219);
+  border-radius: 5px;
+  opacity: 85%;
 }
 
 .inputs:hover {
@@ -41,7 +45,8 @@ UL {
   padding: 2px 10px;
   height: 30%;
   width: 40%;
-  border: 2px solid rgb(54, 81, 131);
+  border: 5px solid rgb(156, 199, 219);
+  border-radius: 5px;
   overflow: hidden; 
   overflow-y: scroll;
   white-space: nowrap;
@@ -50,6 +55,7 @@ UL {
 li {
   list-style: none;
   padding: 5px;
+  font-size: 18px;
 }
 
 UL li.selected {
@@ -73,23 +79,24 @@ UL li.selected {
   text-align: center;
   margin-left: 5vh;
   float: right;
-  left: 54.8vh;
+  left: 50vh;
   top: 48vh;
 }
 
 #totalContainer {
   position: absolute;
-  display: inline-block;
   left: 20vh;
   top: 2vh;
   padding: 2px 10px;
   height: 11%;
   width: 10%;
-  border: 2px solid rgb(54, 81, 131);
+  border: 5px solid rgb(156, 185, 219);
+  border-radius: 5px;
   text-align: center;
   font-size: 16px;
   overflow: hidden;
   white-space: nowrap;
+  font-size: large; 
 }
 
 /* Income */
@@ -97,12 +104,13 @@ UL li.selected {
 #incomeBox {
   background-color: honeydew;
   float: right;
-  left: 60vh;
+  left: 55vh;
   top: 60vh;
 }
 
 #incomeContainer {
   position: absolute;
+  display: table-cell;
   left: 20vh;
   top: 60vh;
   padding: 8px 10px;
@@ -113,11 +121,11 @@ UL li.selected {
   min-height: 18px;
   overflow: hidden;
   white-space: nowrap;
-  text-align: center;
+  vertical-align: text-top middle;
 }
 
 #incomeContainer:empty {
-  border: 1px dashed black;
+  border: 1px dashed rgb(16, 4, 182);
   max-width: 150px;
   min-width: 150px;
   min-height: 22px;
@@ -127,12 +135,13 @@ UL li.selected {
 #budgetContainer {
   position: absolute;
   display: inline-block;
-  left: 60vh;
+  left: 57vh;
   top: 2vh;
   padding: 2px 10px;
   height: 11%;
   width: 12%;
-  border: 2px solid rgb(54, 81, 131);
+  border: 5px solid rgb(156, 185, 219);
+  border-radius: 5px;
   text-align: center;
   font-size: 16px;
   overflow: hidden;
@@ -141,136 +150,91 @@ UL li.selected {
 
 /* BUTTONS */
 
+/* All buttons */
 .btn {
   background-color: rgb(182, 232, 255);
   color: black;
   font-family: 'Lucida Sans', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  opacity: 90%;
+  opacity: 70%;
   min-height: 40px;
   max-height: 40px;
   font-size: 16px;
+  border-radius: 5px;
 }
 
-.btn:hover {
-  background-color: rgb(126, 214, 255);
-}
+    .btn:hover {
+      background-color: rgb(126, 214, 255);
+    }
 
-.hide {
-  display: none;
-  border: 1px solid black;
-  min-height: 10px;
-  max-height: 30px;
-  min-width: 8em;
-  max-width: 8em;
-  padding: 5px;
-  text-align: center;
-  float: right;
-  right: 13%;
-}
+    /* displays on mouse hover over buttons */
+    .hide {
+      position: absolute;
+      display: none;
+      border: 1px dashed rgb(126, 214, 255);
+      min-height: 10px;
+      max-height: 30px;
+      min-width: 8em;
+      max-width: 8em;
+      padding: 5px;
+      text-align: center;
+      float: right;
+      right: 13%;
+      opacity: 80%;
+    }
 
-.btn:hover + .hide {
-  position: relative;
-  display: block;
-  color: black;
-  font-size: 10px;
-}
+    .btn:hover + .hide {
+      position: relative;
+      display: block;
+      color: black;
+      font-size: 10px;
+    }
 
+/* Calculate Budget */
 #calculateBudget {
   position: absolute;
-  left: 58%;
+  left: 60.5%;
   top: 5vh;
   padding: 6px 7px;
   margin: 0px 60px 0px 20px;
 }
 
-#expenseButton {
+/* Submit New Expense */
+#submitExpense {
   position: absolute;
-  left: 58%;
+  left: 61%;
   top: 48vh;
   padding: 6px 6px;
   margin: 0px 60px 0px 20px;
 }
 
+/* Set User Income Button */
 #incomeButton {
   position: absolute;
-  left: 58%;
+  left: 61%;
   top: 60vh;
-  padding: 6px 8px;
-  margin: 0px 60px 0px 20px;
-}
-
-#removeExpense {
-  position: absolute;
-  left: 58%;
-  top: 28vh;
   padding: 6px 10px;
   margin: 0px 60px 0px 20px;
 }
 
-#clearExpenseTotal {
+/* Delete Expense Item */
+#removeExpense {
   position: absolute;
-  left: 27%;
-  top: 5vh;
-  padding: 6px 5px;
+  left: 61%;
+  top: 28vh;
+  padding: 6px 7x;
   margin: 0px 60px 0px 20px;
 }
 
-/* Three Colored Columns for UI Design */
-#columnone {
+/* Clear Expense Total Amount */
+#clearExpenseTotal {
   position: absolute;
-  border: 3px solid rgb(95, 228, 228);
-  background-color: rgb(95, 228, 228);
-  left: 99.3%;
-  top: -6px;
-  min-height: 99%;
-  max-height: 99%;
-  padding: 6.5px 5px;
-  opacity: 80%;
-}
-
-#columntwo {
-  position: absolute;
-  border: 3px solid rgb(111, 236, 236);
-  background-color: rgb(111, 236, 236);
-  left: 97.3%;
-  top: -6px;
-  min-height: 99%;
-  max-height: 99%;
-  padding: 6.5px 5px;
-  opacity: 80%;
-}
-
-#columnthree {
-  position: absolute;
-  border: 3px solid rgb(93, 231, 255);
-  background-color: rgb(93, 231, 255);
-  left: 95.3%;
-  top: -6px;
-  min-height: 99%;
-  max-height: 99%;
-  padding: 6.5px 5px;
-  opacity: 80%;
-}
-
-#columnfour {
-  position: absolute;
-  border: 3px solid rgb(126, 214, 255);
-  background-color: rgb(126, 214, 255);
-  left: 91.6%;
-  top: -6px;
-  min-height: 99%;
-  max-height: 99%;
-  padding: 6.5px 15px;
-  opacity: 80%;
-}
-
-/* rgb(171, 200, 253); --- lavender-ish purple */
-
-/* Positioning the pop-up user tips on mouse hover over buttons */
-
-#calc {
+  left: 28%;
   top: 5vh;
+  padding: 6px 7px;
+  margin: 0px 60px 0px 20px;
 }
+
+/* Pop up messages when mouse hovers over buttons */
 
 #exp {
   top: 48vh;
@@ -285,6 +249,61 @@ UL li.selected {
 }
 
 #clear {
-  top: 0;
-  right: 88vh;  
+  top: 2px;
+  right: 78vh;  
+}
+
+#calc {
+  top: 5vh;
+}
+
+/* Three Colored Columns for UI Design */
+
+/* column one is invisible */
+#columnone {
+  position: absolute;
+  border: 3px solid rgb(95, 228, 228);
+  background-color: rgb(95, 228, 228);
+  left: 99.3%;
+  top: -6px;
+  min-height: 99%;
+  max-height: 99%;
+  padding: 6.5px 5px;
+  opacity: 0%;
+}
+
+#columntwo {
+  position: absolute;
+  border: 3px solid rgb(106, 180, 230);
+  background-color: rgb(106, 180, 230);
+  left: 97.3%;
+  top: -6px;
+  min-height: 99%;
+  max-height: 99%;
+  padding: 6.5px 5px;
+  opacity: 50%;
+}
+
+#columnthree {
+  position: absolute;
+  border: 3px solid rgb(106, 180, 230);
+  background-color: rgb(106, 180, 230);
+  left: 95.3%;
+  top: -6px;
+  min-height: 99%;
+  max-height: 99%;
+  padding: 6.5px 5px;
+  opacity: 50%;
+}
+
+#columnfour {
+  position: absolute;
+  border: 3px solid rgb(126, 214, 255);
+  background-color: rgb(126, 214, 255);
+  left: 91.6%;
+  top: -6px;
+  min-height: 99%;
+  max-height: 99%;
+  padding: 6.5px 15px;
+  opacity: 50%;
 }
