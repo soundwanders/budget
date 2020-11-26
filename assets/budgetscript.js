@@ -1,10 +1,10 @@
-// budget app.js
+// budgetscript.js
 
 // get div budgetWrapper, which acts as a canvas for UI design elements
 const budgetWrapper = document.querySelector('.wrapper');
 
 // regular expressions to check for numbers, letters
-// used in submit functions to validate user input values
+// used in 'submit' functions to validate input values before appending
 regExNumbers = /^\d+$/;
 regExLetters = /^[A-Z a-z]+$/;
 
@@ -24,7 +24,7 @@ budgetWrapper.appendChild(incomeContainer);
 budgetWrapper.appendChild(setIncome);
 
 // Budget Balance Container
-// create a form that will display budget balance
+// create a form that will display user's budget balance
 const budgetContainer = document.createElement('form');
 budgetContainer.id = ('budgetContainer');
 budgetContainer.setAttribute('type', 'text');
@@ -55,14 +55,12 @@ expenseList.setAttribute('id', 'expenseUL');
 budgetWrapper.appendChild(expenseList);
 
 // Expenses Total Amount Container
-// create a container to hold total of all expenses ,
-// then update whenever user adds a new expense item to expenseList
 const totalContainer = document.createElement('div');
 totalContainer.id = 'totalContainer';
 
 budgetWrapper.appendChild(totalContainer);
 
-// Add class 'Selected' to list items when clicked.
+// Add class 'Selected' to list items when clicked
 const getList = document.querySelector('UL');
 getList.addEventListener('click', function (ev) {
   if (ev.target.tagName === 'LI') {
@@ -87,9 +85,16 @@ function submitIncome() {
     incomeContainer.innerHTML = ' ';
     incomeContainer.textContent = ' ';
 
-    // incomeContainer.append(expItemName);
     newIncome.slice[0];
     incomeContainer.append(parseFloat(newIncome));
+
+  } else if (newIncome[0] == ' ' && newIncome[1].match(regExNumbers)) {
+    incomeContainer.innerHTML = ' ';
+    incomeContainer.textContent = ' ';
+
+    newIncome.slice[0];
+    incomeContainer.append(parseFloat(newIncome));
+
   } else {
     incomeContainer.innerHTML = '';
     incomeContainer.textContent = '';
@@ -147,13 +152,21 @@ function submitExpense() {
     expenseAmount.value = '';
     expenseAmount.innerHTML = '';
 
+  } else if (itemCost[0] == ' ' && itemCost[1].match(regExNumbers)) {
+    itemCost.slice[0];
+    parseFloat(itemCost);
+    expenseList.appendChild(li);
+
+    expenseName.value = '';
+    expenseName.innerHTML = '';
+    expenseAmount.value = '';
+    expenseAmount.innerHTML = '';
+
   } else {
-    // add expense name and cost to list
     li.appendChild(txt);
     expenseList.appendChild(li);
     console.log(li);
 
-    // clear expense input fields
     expenseName.value = '';
     expenseName.innerHTML = '';
     expenseAmount.value = '';
@@ -212,7 +225,7 @@ function calculateBudget() {
   console.log(userBalance);
 };
 
-// DELETE EXPENSE Function .... deletes entire UL needs fix
+// DELETE EXPENSE Function
 function deleteExpense() {
   const liSelect = document.getElementsByClassName("selected");
   while (liSelect.length > 0) liSelect[0].remove();
