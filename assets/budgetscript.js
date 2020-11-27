@@ -6,12 +6,13 @@ const budgetWrapper = document.querySelector('.wrapper');
 // regular expressions to check for numbers, letters
 // used in 'submit' functions to validate input values before appending
 regExNumbers = /^\d+$/;
-regExLetters = /^[A-Z a-z]+$/;
+regExLetters = /^[A-Z ' a-z]+$/;
 
 // Income Container
 // create div to display income
-const incomeContainer = document.createElement('form');
+const incomeContainer = document.createElement('div');
 incomeContainer.id = 'incomeContainer';
+incomeContainer.setAttribute('type', 'text');
 incomeContainer.textContent = '';
 
 // Income Input Box
@@ -24,7 +25,7 @@ budgetWrapper.appendChild(incomeContainer);
 budgetWrapper.appendChild(setIncome);
 
 // Budget Balance Container
-// create a form that will display user's budget balance
+// create a form that will display user's budget
 const budgetContainer = document.createElement('form');
 budgetContainer.id = ('budgetContainer');
 budgetContainer.setAttribute('type', 'text');
