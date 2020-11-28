@@ -15,7 +15,7 @@
 </head>
 
 <title>
-Budget
+Simple Budget
 </title>
 
 <body>
@@ -33,20 +33,15 @@ Budget
 
     <!-- Buttons used to activate Javascript functions-->
     <div class="buttons">
-        <button class = "btn" id = "calculateBudget"  onclick = "calculateBudget()">Calculate Budget</button>
-        <div class = "hide" id ="calc">Recalculate Your Budget</div>
+        <button class = "btn" id = "calculateBudget" title = "Recalculate your monthly budget"  onclick = "calculateBudget()">Calculate Budget</button>
 
-        <button class = "btn" id = "incomeButton" onclick = "submitIncome()">Submit Income</button>
-        <div class = "hide" id ="inc">Submit  Your Monthly Income</div>
+        <button class = "btn" id = "incomeButton" title = "Submit Monthly Income" onclick = "submitIncome()">Submit Income</button>
 
-        <button class = "btn" id = "submitExpense" onclick = "submitExpense()">Submit Expense</button>
-        <div class = "hide" id ="exp">Submit A New Expense</div>
+        <button class = "btn" id = "submitExpense" title = "Submit New Expense" onclick = "submitExpense()">Submit Expense</button>
 
-        <button class = "btn" id = "removeExpense"  onclick = "deleteExpense()">Delete Expense</button>
-        <div class = "hide" id ="del">Delete Selected Item</div>
-
-        <button class = "btn" id = "clearExpenseTotal" onclick = "clearTotalAmount()">Reset Total</button>
-        <div class = "hide" id ="clear">Reset Expense Total Amount</div>
+        <button class = "btn" id = "removeExpense" title = "Delete Selected Expense Item" onclick = "deleteExpense()" >Delete Expense</button>
+ 
+        <button class = "btn" id = "clearExpenseTotal" title = "Reset Total Expense Amount" onclick = "clearTotalAmount()">Reset Total</button>
     </div>
 
 </div>

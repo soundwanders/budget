@@ -1,22 +1,36 @@
 /* budgetstyle.css */
-
 HTML {
   background-color:darkslategrey;
 }
 
+/* moneybag */
+img {
+  display: fixed;
+  position: absolute;
+  top: 62%;
+  left: 33%;
+  width: 7.5%;
+  margin: auto;
+  opacity: 65%;
+}
+
+/* project container */
 .wrapper {
   position: absolute;
+  left: 22%;
+  top: 5%;
   min-width: 55%;
   max-width: 55%;
   display: block;
   height: 80vh;
   padding: 0px 15px;
-  margin: 5vh 40vh;
+  margin: 0 auto;
   border: 6px solid cornsilk;
   border-radius: 2%;
   background-color: ivory;
 }
 
+/* all inputs */
 .inputs {
   position: absolute;
   min-height: 18px;
@@ -74,6 +88,13 @@ UL li.selected {
   background-color: lightcyan;
 }
 
+#expenseName:hover + .hide {
+  position: relative;
+  display: block;
+  color: black;
+  font-size: 14px;
+}
+
 #expenseAmount {
   float: right;
   left: 50vh;
@@ -98,6 +119,7 @@ UL li.selected {
   border: 5px solid rgb(156, 185, 219);
   border-radius: 5px;
   background-color: rgb(220, 244, 255);
+  color: rgb(2, 14, 46);
 }
 
 /* Income */
@@ -108,6 +130,7 @@ UL li.selected {
   text-align: center;
   font-size: 18px;
   font-family: Georgia, serif;
+  color: rgb(2, 14, 46);
 }
 
 #incomeContainer {
@@ -125,8 +148,8 @@ UL li.selected {
   font-size: 18px;
   font-family: Georgia, serif;
   border: 4px dotted rgb(47, 120, 230); 
-  background-color: #cbf0ff;
-  opacity: 80%;
+  background-color: rgb(220, 244, 255);
+  color: rgb(2, 14, 46);
 }
 
 #incomeContainer:empty {
@@ -155,6 +178,23 @@ UL li.selected {
   border: 5px solid rgb(156, 185, 219);
   border-radius: 5px;
   background-color: rgb(220, 244, 255);
+  color: rgb(2, 14, 46);
+}
+
+/* Pop-up div displays when mouse hovers over buttons */
+.hide {
+  display: none;
+  float: right;
+  right: 12%;
+  min-height: 10px;
+  max-height: 30px;
+  min-width: 8em;
+  max-width: 8em;
+  padding: 2px 2px;
+  text-align: center;
+  font-family: Georgia, serif;
+  opacity: 80%;
+  border: 1px dashed rgb(126, 214, 255);
 }
 
 /* BUTTONS */
@@ -166,27 +206,11 @@ UL li.selected {
   font-size: 14px;
   font-weight: 600;
   font-family: Georgia, serif;
-  border: 2px solid rgb(106, 180, 230);
-  border-radius: 5px;
+  border: 3px solid rgb(106, 180, 230);
+  border-radius: 3px;
   background-color: rgb(182, 232, 255);
   color: rgb(2, 14, 46);
   opacity: 70%;
-}
-
-/* pop-up displays on mouse hover over buttons */
-.hide {
-  display: none;
-  float: right;
-  right: 12%;
-  min-height: 10px;
-  max-height: 30px;
-  min-width: 8em;
-  max-width: 8em;
-  padding: 5px;
-  text-align: center;
-  font-family: Georgia, serif;
-  opacity: 80%;
-  border: 1px dashed rgb(126, 214, 255);
 }
 
 .btn:hover + .hide {
@@ -272,7 +296,7 @@ UL li.selected {
 
 /* expense total $ */
 #clear {
-  top: .5px;
+  top: 5px;
   right: 78vh;
 }
 
@@ -281,6 +305,15 @@ UL li.selected {
   top: 5vh;
 }
 
+#expName {
+  top: 30vh;
+  left: 15%;
+}
+
+#expCost {
+  top: 30vh;
+  left: 20%;
+}
 /* Three Colored Columns */
 
 /* column one is invisible */
@@ -334,7 +367,6 @@ UL li.selected {
 
 /* UL column stripes */
 
-
 #columnfive {
   position: absolute;
   border: 3px solid rgb(126, 214, 255);
@@ -357,15 +389,4 @@ UL li.selected {
   max-height: 30%;
   padding: 2.5px 3px;
   opacity: 50%;
-}
-
-/* moneybag */
-img {
-  display: block;
-  position: absolute;
-  top: 62%;
-  left: 33%;
-  width: 7.5%;
-  margin: auto;
-  opacity: 65%;
 }

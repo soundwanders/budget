@@ -14,12 +14,14 @@ const incomeContainer = document.createElement('div');
 incomeContainer.id = 'incomeContainer';
 incomeContainer.setAttribute('type', 'text');
 incomeContainer.textContent = '';
+incomeContainer.title = 'Displays monthly income';
 
 // Income Input Box
 const setIncome = document.createElement('input');
 setIncome.classList.add('inputs');
 setIncome.id = 'incomeBox';
 setIncome.setAttribute('type', 'text');
+setIncome.title = 'Monthly income goes here!';
 
 budgetWrapper.appendChild(incomeContainer);
 budgetWrapper.appendChild(setIncome);
@@ -30,6 +32,7 @@ const budgetContainer = document.createElement('form');
 budgetContainer.id = ('budgetContainer');
 budgetContainer.setAttribute('type', 'text');
 budgetContainer.textContent = '';
+budgetContainer.title = 'Displays budget';
 
 budgetWrapper.appendChild(budgetContainer);
 
@@ -38,6 +41,7 @@ const expenseName = document.createElement('input');
 expenseName.classList.add('inputs');
 expenseName.id = 'expenseName';
 expenseName.setAttribute('type', 'text');
+expenseName.title = 'Expense name goes here!';
 
 budgetWrapper.appendChild(expenseName);
 
@@ -45,6 +49,7 @@ const expenseAmount = document.createElement('input');
 expenseAmount.classList.add('inputs');
 expenseAmount.id = 'expenseAmount';
 expenseAmount.setAttribute('type', 'text');
+expenseAmount.title = 'Expense cost goes here!';
 
 budgetWrapper.appendChild(expenseAmount);
 
@@ -52,12 +57,14 @@ budgetWrapper.appendChild(expenseAmount);
 // create global expenseList to be called in functions
 const expenseList = document.createElement('UL');
 expenseList.setAttribute('id', 'expenseUL');
+expenseList.title = 'List of Expenses';
 
 budgetWrapper.appendChild(expenseList);
 
 // Expenses Total Amount Container
 const totalContainer = document.createElement('div');
 totalContainer.id = 'totalContainer';
+totalContainer.title = 'DIsplays total expense costs';
 
 budgetWrapper.appendChild(totalContainer);
 
@@ -69,10 +76,10 @@ getList.addEventListener('click', function (ev) {
   }
 }, false);
 
-//////////////////////////////////////////////////
+/// ///////////////////////////////////////////////
 
 // SUBMIT INCOME Function
-function submitIncome() {
+function submitIncome () {
   newIncome = document.getElementById('incomeBox').value;
 
   if (newIncome == 0 || '') {
@@ -88,14 +95,12 @@ function submitIncome() {
 
     newIncome.slice[0];
     incomeContainer.append(parseFloat(newIncome));
-
   } else if (newIncome[0] == ' ' && newIncome[1].match(regExNumbers)) {
     incomeContainer.innerHTML = ' ';
     incomeContainer.textContent = ' ';
 
     newIncome.slice[0];
     incomeContainer.append(parseFloat(newIncome));
-
   } else {
     incomeContainer.innerHTML = '';
     incomeContainer.textContent = '';
@@ -111,7 +116,7 @@ function submitIncome() {
 };
 
 // SUBMIT EXPENSE ITEM Function
-function submitExpense() {
+function submitExpense () {
   itemName = document.getElementById('expenseName').value;
   itemCost = document.getElementById('expenseAmount').value;
 
@@ -129,7 +134,6 @@ function submitExpense() {
     expenseAmount.value = '';
     expenseAmount.innerHTML = '';
     return;
-
   } else if (!itemCost.match(regExNumbers)) {
     alert('Expense cost must be all numbers and cannot be empty');
     // clear expense input fields
@@ -152,7 +156,6 @@ function submitExpense() {
     expenseName.innerHTML = '';
     expenseAmount.value = '';
     expenseAmount.innerHTML = '';
-
   } else if (itemCost[0] == ' ' && itemCost[1].match(regExNumbers)) {
     itemCost.slice[0];
     parseFloat(itemCost);
@@ -162,7 +165,6 @@ function submitExpense() {
     expenseName.innerHTML = '';
     expenseAmount.value = '';
     expenseAmount.innerHTML = '';
-
   } else {
     li.appendChild(txt);
     expenseList.appendChild(li);
@@ -173,11 +175,11 @@ function submitExpense() {
     expenseAmount.value = '';
     expenseAmount.innerHTML = '';
   }
-  
+
   // REFRESH TOTAL Function
   // nested in SubmitExpense Function
   // running total of sum of all expense costs
-  function refreshTotal(){
+  function refreshTotal () {
     const amount = (parseFloat(itemCost));
 
     if (isNaN(amount)) {
@@ -187,12 +189,10 @@ function submitExpense() {
 
       console.log(totalContainer.innerText);
       console.log('test1');
-
     } else if (isNaN(totalContainer.innerText)) {
       alert('Expense amount is not a number');
       totalContainer.innerHTML = '';
       totalContainer.text = '';
-
     } else {
       const oldAmount = parseFloat(totalContainer.innerText);
       console.log('V Previous Expense Total Amount below V');
@@ -212,7 +212,7 @@ function submitExpense() {
 };
 
 // CALCULATE USER BUDGET Function
-function calculateBudget() {
+function calculateBudget () {
   income = parseFloat(newIncome);
 
   total = totalContainer.innerText;
@@ -227,11 +227,11 @@ function calculateBudget() {
 };
 
 // DELETE EXPENSE Function
-function deleteExpense() {
-  const liSelect = document.getElementsByClassName("selected");
+function deleteExpense () {
+  const liSelect = document.getElementsByClassName('selected');
   while (liSelect.length > 0) liSelect[0].remove();
 };
 
-function clearTotalAmount() {
+function clearTotalAmount () {
   totalContainer.innerHTML = '';
 };
