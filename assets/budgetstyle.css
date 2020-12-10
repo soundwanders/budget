@@ -277,6 +277,15 @@ UL li.selected {
   margin: 0px 60px 0px 20px;
 }
 
+#saveButton {
+  position: absolute;
+}
+
+#loadButton {
+  position: absolute;
+  top: 10vh;
+}
+
 /* Positioning the pop-up boxes when mouse hovers over buttons */
 
 /* submit expense */
