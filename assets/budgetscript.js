@@ -82,9 +82,11 @@ getList.addEventListener('click', function (ev) {
 function submitIncome () {
   newIncome = document.getElementById('incomeBox').value;
   newIncome.id = 'newIncome';
+  monthlyIncome = ('$' + newIncome + ' ' + '/ month');
 
   if (newIncome == 0 || '') {
     alert('Income amount cannot be zero or empty');
+
   } else if (newIncome.match(regExLetters)) {
     alert('Income amount must be a number');
 
@@ -93,22 +95,21 @@ function submitIncome () {
   } else if (newIncome[0] == 0 && newIncome[1].match(regExNumbers)) {
     incomeContainer.innerHTML = ' ';
     incomeContainer.textContent = ' ';
-    incomeContainer.append(parseFloat(newIncome));
+    incomeContainer.append(monthlyIncome);
+    console.log('Income submitted');
 
     // else if itemCost begins with a space and next value is a number ,
-    // then slice all spaces, parseFloat and append income
+    // then slice all spaces, parseInt and append income
   } else if (newIncome[0] == ' ' && newIncome[1].match(regExNumbers)) {
     incomeContainer.innerHTML = ' ';
     incomeContainer.textContent = ' ';
-
     newIncome.slice[0];
-    incomeContainer.append(parseFloat(newIncome));
+    incomeContainer.append(monthlyIncome);
+    console.log('Income submitted');
 
   } else {
     incomeContainer.innerHTML = '';
     incomeContainer.textContent = '';
-    monthlyIncome = ('$' + parseFloat(newIncome) + ' ' + '/ month');
-
     incomeContainer.append(monthlyIncome);
     console.log('Income submitted');
 
@@ -148,10 +149,10 @@ function submitExpense () {
     return;
 
     // if expense value first num is 0 and next value is != 0 ,
-    // then slice 0, parseFloat cost and append to list
+    // then slice 0, parseInt cost and append to list
   } else if (itemCost[0] == 0 && itemCost[1].match(regExNumbers)) {
     itemCost.slice[0];
-    parseFloat(itemCost);
+    parseInt(itemCost);
     expenseList.appendChild(li);
 
     expenseName.value = '';
@@ -160,10 +161,10 @@ function submitExpense () {
     expenseAmount.innerHTML = '';
 
     // else if itemCost begins with a space and next value is a number ,
-    // then slice all spaces, parseFloat cost and append to list
+    // then slice all spaces, parseInt cost and append to list
   } else if (itemCost[0] == ' ' && itemCost[1].match(regExNumbers)) {
     itemCost.slice[0];
-    parseFloat(itemCost);
+    parseInt(itemCost);
     expenseList.appendChild(li);
 
     expenseName.value = '';
@@ -174,7 +175,7 @@ function submitExpense () {
   } else {
     li.appendChild(txt);
     expenseList.appendChild(li);
-    console.log(li);
+    console.log(li.txt);
 
     expenseName.value = '';
     expenseName.innerHTML = '';
@@ -183,10 +184,10 @@ function submitExpense () {
   }
 
   // REFRESH TOTAL Function
-  // nested in SubmitExpense Function
+  // nested within SubmitExpense Function
   // running total of sum of all expense costs
   function refreshTotal () {
-    const amount = (parseFloat(itemCost));
+    const amount = (parseInt(itemCost));
 
     if (isNaN(amount)) {
       alert('Amount is not a number');
@@ -202,7 +203,7 @@ function submitExpense () {
       totalContainer.text = '';
 
     } else {
-      const oldAmount = parseFloat(totalContainer.innerText);
+      const oldAmount = parseInt(totalContainer.innerText);
       console.log('V - Previous Expense Total Amount Blow');
       console.log(oldAmount);
 
@@ -221,19 +222,19 @@ function submitExpense () {
 
 // CALCULATE USER BUDGET Function
 function calculateBudget () {
-  income = incomeContainer.innerHTML;
-  income.slice[1];
-  parseFloat(income);
+  income = incomeContainer.innerHTML.substring(1);
+  newIncome = parseInt(income);
+  console.log(newIncome);
 
-  total = totalContainer.innerText;
-  parseFloat(total);
+  total = parseInt(totalContainer.innerHTML);
+  console.log(total);
 
-  newTotal = ('$' + (income - total));
-
-  const userBalance = (newTotal);
-  budgetContainer.innerText = ''; // clear old value
-  budgetContainer.append(userBalance); // append new value
-  console.log(userBalance);
+  const newTotal = (newIncome - total);
+  newTotal.id = 'budgetBalance';
+  budgetContainer.innerHTML = ''; // clear old value
+  budgetContainer.append(newTotal); // append new value
+  budgetContainer.prepend("$");
+  console.log(newTotal);
 };
 
 // DELETE EXPENSE Function
@@ -258,6 +259,7 @@ function saveData () {
   // budget
   localStorage.setItem('budget', budgetContainer.innerHTML);
   var saveBudget = localStorage.getItem('budget');
+  saveBudget.id = 'budgetBalance';
   console.log(saveBudget);
 
   // expense total
@@ -271,8 +273,8 @@ function saveData () {
 // Load User Data
 function getData() {
   // income
-  var newIncome = localStorage.getItem('income');
-  incomeContainer.append(newIncome);
+  var getIncome = localStorage.getItem('income');
+  incomeContainer.append(getIncome);
 
   // budget
   var getBudget = localStorage.getItem('budget');
