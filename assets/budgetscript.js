@@ -82,7 +82,7 @@ getList.addEventListener('click', function (ev) {
 function submitIncome () {
   newIncome = document.getElementById('incomeBox').value;
   newIncome.id = 'newIncome';
-  monthlyIncome = ('$' + newIncome + ' ' + '/ month');
+  monthlyIncome = ('$' + newIncome + '/month');
 
   if (newIncome == 0 || '') {
     alert('Income amount cannot be zero or empty');
@@ -214,6 +214,8 @@ function submitExpense () {
 
       totalContainer.innerHTML = '';
       totalContainer.append(newAmount);
+      totalContainer.prepend("$");
+      console.log(newAmount);
       console.log('Expense Total Updated');
     }
   }
@@ -247,26 +249,18 @@ function clearTotalAmount () {
   totalContainer.innerHTML = '';
 };
 
-// LOCAL STORAGE -- work in progress
+// LOCAL STORAGE , SAVE AND LOAD USER DATA
 
 // Save User Data
 function saveData () {
   // income
   localStorage.setItem('income' , incomeContainer.innerHTML);
-  var saveIncome = localStorage.getItem('income');
-  console.log(saveIncome);
 
   // budget
   localStorage.setItem('budget', budgetContainer.innerHTML);
-  var saveBudget = localStorage.getItem('budget');
-  saveBudget.id = 'budgetBalance';
-  console.log(saveBudget);
 
   // expense total
   localStorage.setItem('expenseTotal', totalContainer.innerHTML);
-  var saveTotal = localStorage.getItem('expenseTotal');
-  saveTotal.id = 'newIncome';
-  console.log(saveTotal);
 }
 
 
@@ -274,6 +268,7 @@ function saveData () {
 function getData() {
   // income
   var getIncome = localStorage.getItem('income');
+  getIncome.id = 'newIncome';
   incomeContainer.append(getIncome);
 
   // budget
@@ -282,5 +277,6 @@ function getData() {
 
   // expense total
   var getExpenseTotal = localStorage.getItem('expenseTotal');
+  getExpenseTotal.id = 'newTotal';
   totalContainer.append(getExpenseTotal);
 }

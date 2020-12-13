@@ -22,6 +22,8 @@ Simple Budget
 <div class = "wrapper">
 
     <img class = "moneybag" src="assets/moneybag.png">
+    <img class = "dollarsign" src="assets/dollarsign.png">
+    <img class = "dollarsign2" src="assets/dollarsign.png">
 
     <!-- Colored columns -->
     <div id = "columnone"></div>
@@ -30,6 +32,7 @@ Simple Budget
     <div id = "columnfour"></div>
     <div id = "columnfive"></div>
     <div id = "columnsix"></div>
+    <div id = "columnseven"></div>
 
     <!-- Buttons used to activate Javascript functions-->
     <div class="buttons">
@@ -41,11 +44,11 @@ Simple Budget
 
         <button class = "btn" id = "removeExpense" title = "Delete Selected Expense Item" onclick = "deleteExpense()" >Delete Expense</button>
  
-        <button class = "btn" id = "clearExpenseTotal" title = "Reset Total Expense Amount" onclick = "clearTotalAmount()">Reset Total</button>
+        <button class = "btn" id = "clearExpenseTotal" title = "Clear Total Expense Amount" onclick = "clearTotalAmount()">Clear Total</button>
 
-        <button class = "btn" id = "saveButton" title = "Save your budget" onclick = "saveData()">Save</button>
+        <button class = "btn" id = "saveButton" title = "Save all budget data" onclick = "saveData()">Save</button>
 
-        <button class = "btn" id = "loadButton" title = "Load your budget" onclick = "getData()">Load</button>
+        <button class = "btn" id = "loadButton" title = "Load all budget data" onclick = "getData()">Load</button>
     </div>
 
 </div>
