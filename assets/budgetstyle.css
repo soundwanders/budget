@@ -11,6 +11,7 @@ HTML {
   left: 33%;
   width: 7%;
   opacity: 60%;
+  image-rendering: auto;
 }
 
 /* dollar sign inside budget container */
@@ -22,7 +23,7 @@ HTML {
   width: 3%;
   opacity: 9%;
   z-index: 1;
-  image-rendering: optimizeSpeed;
+  image-rendering: auto;
 }
 
 /* dollar sign inside expense total contaner*/
@@ -34,7 +35,7 @@ HTML {
   width: 3%;
   opacity: 9%;
   z-index: 1;
-  image-rendering: optimizeSpeed;
+  image-rendering: auto;
 }
 
 /* project container */
@@ -231,7 +232,7 @@ UL li.selected {
   font-weight: 600;
   font-family: Georgia, serif;
   border: 3px solid rgb(106, 180, 230);
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: rgb(182, 232, 255);
   color: rgb(2, 14, 46);
   opacity: 80%;

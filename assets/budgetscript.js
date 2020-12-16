@@ -237,6 +237,8 @@ function calculateBudget () {
   budgetContainer.append(newTotal); // append new value
   budgetContainer.prepend("$");
   console.log(newTotal);
+
+
 };
 
 // DELETE EXPENSE Function
@@ -247,6 +249,7 @@ function deleteExpense () {
 
 function clearTotalAmount () {
   totalContainer.innerHTML = '';
+  console.log("Expense total amount reset");
 };
 
 // LOCAL STORAGE , SAVE AND LOAD USER DATA
@@ -261,7 +264,7 @@ function saveData () {
 
   // expense total
   localStorage.setItem('expenseTotal', totalContainer.innerHTML);
-}
+};
 
 
 // Load User Data
@@ -269,14 +272,17 @@ function getData() {
   // income
   var getIncome = localStorage.getItem('income');
   getIncome.id = 'newIncome';
+  incomeContainer.innerHTML = '';
   incomeContainer.append(getIncome);
 
   // budget
   var getBudget = localStorage.getItem('budget');
+  budgetContainer.innerHTML = '';
   budgetContainer.append(getBudget);
 
   // expense total
   var getExpenseTotal = localStorage.getItem('expenseTotal');
   getExpenseTotal.id = 'newTotal';
+  totalContainer.innerHTML = '';
   totalContainer.append(getExpenseTotal);
-}
+};
