@@ -46,9 +46,9 @@ HTML {
   min-width: 55%;
   max-width: 55%;
   display: block;
-  height: 80vh;
+  height: 70vh;
   padding: 0px 15px;
-  margin: 0 auto;
+  margin: 1% auto;
   border: 6px solid cornsilk;
   border-radius: 2%;
   background-color: ivory;
@@ -99,6 +99,7 @@ li {
 UL li.selected {
   background: rgb(173, 223, 243);
   color: midnightblue;
+  margin: auto;
 }
 
 /* Expenses */
@@ -426,11 +427,12 @@ UL li.selected {
   border: 3px solid rgb(126, 214, 255);
   background-color: rgb(126, 214, 255);
   left: 54.5%;
-  top: 21.5%;
+  top: 24.5%;
   min-height: 30%;
   max-height: 30%;
   padding: 2.5px 3px;
   opacity: 50%;
+  z-index: 1;
 }
 
 #columnsix {
@@ -438,11 +440,12 @@ UL li.selected {
   border: 3px solid rgb(126, 214, 255);
   background-color: rgb(126, 214, 255);
   left: 53%;
-  top: 21.5%;
+  top: 24.5%;
   min-height: 30%;
   max-height: 30%;
   padding: 2.5px 3px;
   opacity: 50%;
+  z-index: 1;
 }
 
 #columnseven {
@@ -450,9 +453,10 @@ UL li.selected {
   border: 3px solid rgb(126, 214, 255);
   background-color: rgb(126, 214, 255);
   left: 51.5%;
-  top: 21.5%;
+  top: 24.5%;
   min-height: 30%;
   max-height: 30%;
   padding: 2.5px 3px;
   opacity: 50%;
+  z-index: 1;
 }

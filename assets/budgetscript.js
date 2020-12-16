@@ -237,8 +237,6 @@ function calculateBudget () {
   budgetContainer.append(newTotal); // append new value
   budgetContainer.prepend("$");
   console.log(newTotal);
-
-
 };
 
 // DELETE EXPENSE Function
