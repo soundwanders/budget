@@ -53,6 +53,13 @@ expenseAmount.title = 'Expense cost goes here!';
 
 budgetWrapper.appendChild(expenseAmount);
 
+// Expenses Total Amount Container
+const totalContainer = document.createElement('div');
+totalContainer.id = 'totalContainer';
+totalContainer.title = 'DIsplays total expense costs';
+
+budgetWrapper.appendChild(totalContainer);
+
 // Expense List Container
 // create global expenseList to be called in functions
 const expenseList = document.createElement('UL');
@@ -60,13 +67,6 @@ expenseList.setAttribute('id', 'expenseUL');
 expenseList.title = 'List of Expenses';
 
 budgetWrapper.appendChild(expenseList);
-
-// Expenses Total Amount Container
-const totalContainer = document.createElement('div');
-totalContainer.id = 'totalContainer';
-totalContainer.title = 'DIsplays total expense costs';
-
-budgetWrapper.appendChild(totalContainer);
 
 // Add class 'Selected' to list items when clicked
 const getList = document.querySelector('UL');
@@ -76,7 +76,7 @@ getList.addEventListener('click', function (ev) {
   }
 }, false);
 
-/// ///////////////////////////////////////////////
+//////// FUNCTIONS ////////
 
 // SUBMIT INCOME Function
 function submitIncome () {
@@ -87,20 +87,20 @@ function submitIncome () {
   if (newIncome == 0 || '') {
     alert('Income amount cannot be zero or empty');
 
-  } else if (newIncome.match(regExLetters)) {
+  } else if (!newIncome.match(regExNumbers)) {
     alert('Income amount must be a number');
 
     // if income's first value is 0 and next value is > 0,
     // then slice all 0 until value reads > 0
-  } else if (newIncome[0] == 0 && newIncome[1].match(regExNumbers)) {
+  } else if (!newIncome[0] == 0 && newIncome[1].match(regExLetters)) {
     incomeContainer.innerHTML = ' ';
     incomeContainer.textContent = ' ';
     incomeContainer.append(monthlyIncome);
     console.log('Income submitted');
 
-    // else if itemCost begins with a space and next value is a number ,
-    // then slice all spaces, parseInt and append income
-  } else if (newIncome[0] == ' ' && newIncome[1].match(regExNumbers)) {
+    // else if itemCost begins or ends with a 'space' ,
+    // then slice all white space , parseInt and append income
+  } else if (!newIncome[0] == ' ' && newIncome[1].match(regExLetters)) {
     incomeContainer.innerHTML = ' ';
     incomeContainer.textContent = ' ';
     newIncome.slice[0];
@@ -193,7 +193,7 @@ function submitExpense () {
       alert('Amount is not a number');
     } else if (totalContainer.innerText == '') {
       totalContainer.append(amount);
-
+      totalContainer.prepend('$');
       console.log(totalContainer.innerText);
       console.log('Expense Total Updated');
 
@@ -214,7 +214,7 @@ function submitExpense () {
 
       totalContainer.innerHTML = '';
       totalContainer.append(newAmount);
-      totalContainer.prepend("$");
+      totalContainer.prepend('$');
       console.log(newAmount);
       console.log('Expense Total Updated');
     }
@@ -228,7 +228,7 @@ function calculateBudget () {
   newIncome = parseInt(income);
   console.log(newIncome);
 
-  total = parseInt(totalContainer.innerHTML);
+  total = parseInt(totalContainer.innerHTML.substring(1));
   console.log(total);
 
   const newTotal = (newIncome - total);
@@ -247,11 +247,10 @@ function deleteExpense () {
 
 function clearTotalAmount () {
   totalContainer.innerHTML = '';
-  console.log("Expense total amount reset");
+  console.log("Expense total amount has been reset");
 };
 
 // LOCAL STORAGE , SAVE AND LOAD USER DATA
-
 // Save User Data
 function saveData () {
   // income
@@ -262,25 +261,33 @@ function saveData () {
 
   // expense total
   localStorage.setItem('expenseTotal', totalContainer.innerHTML);
-};
 
+  // list items
+  localStorage.setItem('list' , expenseList.textContent);
+};
 
 // Load User Data
 function getData() {
   // income
-  var getIncome = localStorage.getItem('income');
+  const getIncome = localStorage.getItem('income');
   getIncome.id = 'newIncome';
   incomeContainer.innerHTML = '';
   incomeContainer.append(getIncome);
 
   // budget
-  var getBudget = localStorage.getItem('budget');
+  const getBudget = localStorage.getItem('budget');
   budgetContainer.innerHTML = '';
   budgetContainer.append(getBudget);
 
   // expense total
-  var getExpenseTotal = localStorage.getItem('expenseTotal');
+  const getExpenseTotal = localStorage.getItem('expenseTotal');
   getExpenseTotal.id = 'newTotal';
   totalContainer.innerHTML = '';
   totalContainer.append(getExpenseTotal);
+
+  // list items
+  const getList = localStorage.getItem('list');
+  getList.className = 'li';
+  expenseList.innerText = '';
+  expenseList.append(getList);
 };
