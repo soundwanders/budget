@@ -4,7 +4,7 @@ HTML {
 }
 
 /* budget UI container */
-.budgetWrapper {
+.budgetWrap {
   position: fixed;
   left: 22%;
   top: 5%;
@@ -28,26 +28,25 @@ HTML {
   width: 4%;
   opacity: 60%;
   image-rendering: auto;
+  margin: 0 auto;
 }
 
-/* dollar sign inside expense total contaner*/
-.dollarsign2 {
-  display: block;
+/* dollar sign inside budget container */
+.dollarsign {
   position: fixed;
   top: 9%;
-  left: 34%;
+  left: 49%;
   width: 2%;
   opacity: 9%;
   z-index: 1;
   image-rendering: auto;
 }
 
-/* dollar sign inside budget container */
-.dollarsign {
-  display: block;
+/* dollar sign inside expense total contaner*/
+.dollarsign2 {
   position: fixed;
   top: 9%;
-  left: 49%;
+  left: 34%;
   width: 2%;
   opacity: 9%;
   z-index: 1;
@@ -72,7 +71,7 @@ HTML {
 /* Expense Inputs */
 #expenseName {
   float: right;
-  left: 46%;
+  left: 31%;
   top: 54vh;
   text-align: center;
   font-weight: 600;
@@ -89,7 +88,7 @@ HTML {
 
 #expenseAmount {
   float: right;
-  left: 29%;
+  left: 43.5%;
   top: 54vh;
   font-size: xlarge;
   text-align: center;
@@ -101,7 +100,7 @@ HTML {
 /* Income Input */
 #incomeBox {
   float: right;
-  left: 46%;
+  left: 45.8%;
   top: 66vh;
   text-align: center;
   font-size: 18px;
@@ -178,7 +177,7 @@ HTML {
   border-radius: 5px;
   background-color: rgb(220, 244, 255);
   color: rgb(2, 14, 46);
-    font-size: 28px;
+  font-size: 28px;
 }
 
 /* Expense List */ 
@@ -287,10 +286,12 @@ UL li.selected {
 /* Reset Expense Total Amount Button */
 #clearExpenseTotal {
   position: fixed;
-  left: 23%;
+  min-height: 55px;
+  max-height: 55px;
+  left: 24%;
   top: 10vh;
-  padding: 6px 8px;
-  margin: 0px 60px 0px 20px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 #saveButton {
@@ -365,7 +366,6 @@ UL li.selected {
 #columnone {
   position: absolute;
   border: 3px solid rgb(95, 228, 228);
-  background-color: rgb(95, 228, 228);
   left: 99.3%;
   top: -6px;
   min-height: 99%;

@@ -1,7 +1,7 @@
 // budgetscript.js
 
 // get div budgetWrapper, which acts as a canvas for UI design elements
-const budgetWrapper = document.querySelector('.budgetWrapper');
+const budgetWrapper = document.querySelector('.budgetWrap');
 
 // regular expressions to check for numbers, letters
 // used in 'submit' functions to validate input values before appending
@@ -185,7 +185,7 @@ function submitExpense () {
 
   // REFRESH TOTAL Function
   // nested within SubmitExpense Function
-  // running total of sum of all expense costs
+  // keeps a running total of sum of all expense costs
   function refreshTotal () {
     const amount = (parseInt(itemCost));
 
@@ -245,6 +245,7 @@ function deleteExpense () {
   while (liSelect.length > 0) liSelect[0].remove();
 };
 
+// CLEAR EXPENSE TOTAL AMOUNT Function
 function clearTotalAmount () {
   totalContainer.innerHTML = '';
   console.log("Expense total amount has been reset");
