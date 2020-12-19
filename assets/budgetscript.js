@@ -1,7 +1,7 @@
 // budgetscript.js
 
 // get div budgetWrapper, which acts as a canvas for UI design elements
-const budgetWrapper = document.querySelector('.wrapper');
+const budgetWrapper = document.querySelector('.budgetWrapper');
 
 // regular expressions to check for numbers, letters
 // used in 'submit' functions to validate input values before appending
