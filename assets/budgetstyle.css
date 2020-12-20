@@ -23,8 +23,8 @@ HTML {
 .moneybag {
   display: block;
   position: fixed;
-  top: 56%;
-  left: 41%;
+  top: 33%;
+  left: 60%;
   width: 4%;
   opacity: 60%;
   image-rendering: auto;
@@ -198,12 +198,13 @@ UL {
 
 .li {
   list-style: none;
-  padding: 0px;
+  padding: 10px;
   font-size: 22px;
   font-weight: 600;
   font-family: monospace;
   color: rgb(18, 73, 99);
   margin-bottom: 4px;
+  margin-left: 15px;
 }
 
 UL li.selected {
@@ -220,7 +221,7 @@ UL li.selected {
   max-height: 40px;
   font-size: 15px;
   font-weight: 600;
-  font-family: Georgia, serif;
+  font-family: monospace;
   border: 3px solid rgb(106, 180, 230);
   border-radius: 5px;
   background-color: rgb(182, 232, 255);
@@ -278,7 +279,7 @@ UL li.selected {
 #removeExpense {
   position: fixed;
   left: 57%;
-  top: 32vh;
+  top: 25vh;
   padding: 6px 12px;
   margin: 0px 60px 0px 20px;
 }
@@ -301,9 +302,8 @@ UL li.selected {
   margin: auto;
   padding-top: 0px;
   padding-right: 20px;
-  padding-left: 20px;
   padding-bottom: 2px;
-  font-size: 18px;
+  padding-left: 20px;
   text-align: center;
 }
 
@@ -314,8 +314,8 @@ UL li.selected {
   margin: auto;
   padding-top: 0px;
   padding-right: 20px;
-  padding-left: 20px;
   padding-bottom: 2px;
+  padding-left: 20px;
   font-size: 18px;
   text-align: center;
 }
@@ -378,8 +378,8 @@ UL li.selected {
   position: absolute;
   border: 3px solid rgb(106, 180, 230);
   background-color: rgb(106, 180, 230);
-  left: 97.3%;
   top: -6px;
+  left: 97.3%;
   min-height: 99%;
   max-height: 99%;
   padding: 6.5px 5px;
@@ -390,8 +390,8 @@ UL li.selected {
   position: absolute;
   border: 3px solid rgb(106, 180, 230);
   background-color: rgb(106, 180, 230);
-  left: 95.3%;
   top: -6px;
+  left: 95.3%;
   min-height: 99%;
   max-height: 99%;
   padding: 6.5px 5px;
@@ -402,8 +402,8 @@ UL li.selected {
   position: absolute;
   border: 3px solid rgb(126, 214, 255);
   background-color: rgb(126, 214, 255);
-  left: 91.6%;
   top: -6px;
+  left: 91.6%;
   min-height: 99%;
   max-height: 99%;
   padding: 6.5px 15px;
@@ -416,8 +416,8 @@ UL li.selected {
   position: absolute;
   border: 3px solid rgb(126, 214, 255);
   background-color: rgb(126, 214, 255);
-  left: 54%;
   top: 25.5%;
+  left: 54%;
   min-height: 34%;
   max-height: 34%;
   padding: 2.5px 3px;
@@ -429,8 +429,8 @@ UL li.selected {
   position: absolute;
   border: 3px solid rgb(126, 214, 255);
   background-color: rgb(126, 214, 255);
-  left: 52%;
   top: 25.5%;
+  left: 52%;
   min-height: 34%;
   max-height: 34%;
   padding: 2.5px 3px;
@@ -442,8 +442,8 @@ UL li.selected {
   position: absolute;
   border: 3px solid rgb(126, 214, 255);
   background-color: rgb(126, 214, 255);
-  left: 50%;
   top: 25.5%;
+  left: 50%;
   min-height: 34%;
   max-height: 34%;
   padding: 2.5px 3px;

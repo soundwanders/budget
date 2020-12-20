@@ -81,29 +81,29 @@ getList.addEventListener('click', function (ev) {
 // SUBMIT INCOME Function
 function submitIncome () {
   newIncome = document.getElementById('incomeBox').value;
-  newIncome.id = 'newIncome';
-  monthlyIncome = ('$' + newIncome + '/month');
+  const monthlyIncome = ('$' + newIncome + '/month');
 
   if (newIncome == 0 || '') {
     alert('Income amount cannot be zero or empty');
-
+  
   } else if (!newIncome.match(regExNumbers)) {
     alert('Income amount must be a number');
-
+    
     // if income's first value is 0 and next value is > 0,
     // then slice all 0 until value reads > 0
-  } else if (!newIncome[0] == 0 && newIncome[1].match(regExLetters)) {
-    incomeContainer.innerHTML = ' ';
-    incomeContainer.textContent = ' ';
+  } else if (newIncome[0] == 0 && newIncome[1].match(regExNumbers)) {
+    incomeContainer.innerHTML = '';
+    incomeContainer.textContent = '';
+    newIncome.replaceAll(/^0+/g, '');
     incomeContainer.append(monthlyIncome);
     console.log('Income submitted');
 
     // else if itemCost begins or ends with a 'space' ,
-    // then slice all white space , parseInt and append income
-  } else if (!newIncome[0] == ' ' && newIncome[1].match(regExLetters)) {
-    incomeContainer.innerHTML = ' ';
-    incomeContainer.textContent = ' ';
-    newIncome.slice[0];
+    // then slice all white space , parseFloat and append income
+  } else if (newIncome[0] == ' ' && newIncome[1].match(regExNumbers)) {
+    incomeContainer.innerHTML = '';
+    incomeContainer.textContent = '';
+    parseFloat(newIncome);
     incomeContainer.append(monthlyIncome);
     console.log('Income submitted');
 
@@ -149,10 +149,10 @@ function submitExpense () {
     return;
 
     // if expense value first num is 0 and next value is != 0 ,
-    // then slice 0, parseInt cost and append to list
+    // then slice 0, parseFloat cost and append to list
   } else if (itemCost[0] == 0 && itemCost[1].match(regExNumbers)) {
     itemCost.slice[0];
-    parseInt(itemCost);
+    parseFloat(itemCost);
     expenseList.appendChild(li);
 
     expenseName.value = '';
@@ -161,10 +161,10 @@ function submitExpense () {
     expenseAmount.innerHTML = '';
 
     // else if itemCost begins with a space and next value is a number ,
-    // then slice all spaces, parseInt cost and append to list
+    // then slice all spaces, parseFloat cost and append to list
   } else if (itemCost[0] == ' ' && itemCost[1].match(regExNumbers)) {
     itemCost.slice[0];
-    parseInt(itemCost);
+    parseFloat(itemCost);
     expenseList.appendChild(li);
 
     expenseName.value = '';
@@ -175,7 +175,6 @@ function submitExpense () {
   } else {
     li.appendChild(txt);
     expenseList.appendChild(li);
-    console.log(li.txt);
 
     expenseName.value = '';
     expenseName.innerHTML = '';
@@ -187,13 +186,14 @@ function submitExpense () {
   // nested within SubmitExpense Function
   // keeps a running total of sum of all expense costs
   function refreshTotal () {
-    const amount = (parseInt(itemCost));
+    const amount = (parseFloat(itemCost));
+    amount.id = 'expenseCost';
 
     if (isNaN(amount)) {
       alert('Amount is not a number');
+      
     } else if (totalContainer.innerText == '') {
       totalContainer.append(amount);
-      totalContainer.prepend('$');
       console.log(totalContainer.innerText);
       console.log('Expense Total Updated');
 
@@ -203,7 +203,7 @@ function submitExpense () {
       totalContainer.text = '';
 
     } else {
-      const oldAmount = parseInt(totalContainer.innerText);
+      const oldAmount = parseFloat(totalContainer.innerText);
       console.log('V - Previous Expense Total Amount Blow');
       console.log(oldAmount);
 
@@ -214,7 +214,6 @@ function submitExpense () {
 
       totalContainer.innerHTML = '';
       totalContainer.append(newAmount);
-      totalContainer.prepend('$');
       console.log(newAmount);
       console.log('Expense Total Updated');
     }
@@ -225,10 +224,10 @@ function submitExpense () {
 // CALCULATE USER BUDGET Function
 function calculateBudget () {
   income = incomeContainer.innerHTML.substring(1);
-  newIncome = parseInt(income);
+  newIncome = parseFloat(income);
   console.log(newIncome);
 
-  total = parseInt(totalContainer.innerHTML.substring(1));
+  total = parseFloat(totalContainer.innerHTML.substring(1));
   console.log(total);
 
   const newTotal = (newIncome - total);
