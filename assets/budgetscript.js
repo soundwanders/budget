@@ -81,6 +81,7 @@ getList.addEventListener('click', function (ev) {
 // SUBMIT INCOME Function
 function submitIncome () {
   newIncome = document.getElementById('incomeBox').value;
+  newIncome.classList = 'newIncome';
   const monthlyIncome = ('$' + newIncome + '/month');
 
   if (newIncome == 0 || '') {
@@ -231,7 +232,7 @@ function calculateBudget () {
   console.log(total);
 
   const newTotal = (newIncome - total);
-  newTotal.id = 'budgetBalance';
+  newTotal.classList = 'newTotal';
   budgetContainer.innerHTML = ''; // clear old value
   budgetContainer.append(newTotal); // append new value
   budgetContainer.prepend("$");
@@ -263,14 +264,14 @@ function saveData () {
   localStorage.setItem('expenseTotal', totalContainer.innerHTML);
 
   // list items
-  localStorage.setItem('list' , expenseList.textContent);
+  localStorage.setItem('list' , document.body.UL.li);
 };
 
 // Load User Data
 function getData() {
   // income
   const getIncome = localStorage.getItem('income');
-  getIncome.id = 'newIncome';
+  getIncome.classList = 'newIncome';
   incomeContainer.innerHTML = '';
   incomeContainer.append(getIncome);
 
@@ -281,13 +282,13 @@ function getData() {
 
   // expense total
   const getExpenseTotal = localStorage.getItem('expenseTotal');
-  getExpenseTotal.id = 'newTotal';
+  getExpenseTotal.classList = 'newTotal';
   totalContainer.innerHTML = '';
   totalContainer.append(getExpenseTotal);
 
   // list items
   const getList = localStorage.getItem('list');
-  getList.className = 'li';
+  
   expenseList.innerText = '';
   expenseList.append(getList);
 };

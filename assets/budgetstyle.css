@@ -182,9 +182,11 @@ HTML {
 
 /* Expense List */ 
 UL {
+  list-style-type: none;
   position: fixed;
   left: 31%;
   top: 21vh;
+  text-align: left;
   padding: 0px;
   height: 25%;
   min-width: 23%;
@@ -196,15 +198,25 @@ UL {
   border-radius: 5px;
 }
 
-.li {
-  list-style: none;
-  padding: 10px;
+li {
   font-size: 22px;
   font-weight: 600;
   font-family: monospace;
   color: rgb(18, 73, 99);
-  margin-bottom: 4px;
-  margin-left: 15px;
+  padding-top: 0.6em;
+  padding-left: 0.6em;
+  padding-bottom: 0.1em;
+}
+
+.getLi {
+    padding: 10px;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: monospace;
+    color: rgb(18, 73, 99);
+    margin-bottom: 4px;
+    margin-left: 15px;
+    padding: 0.5em;
 }
 
 UL li.selected {
