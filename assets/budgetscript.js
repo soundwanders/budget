@@ -237,7 +237,6 @@ function calculateBudget () {
   budgetContainer.append(newTotal); // append new value
   budgetContainer.prepend("$");
   console.log(newTotal);
-  
 };
 
 // DELETE EXPENSE Function
@@ -256,40 +255,43 @@ function clearTotalAmount () {
 // Save User Data
 function saveData () {
   // income
-  localStorage.setItem('income' , JSON.stringify(incomeContainer.innerHTML));
+  localStorage.setItem('income' , JSON.stringify(incomeContainer.innerText));
 
   // budget
-  localStorage.setItem('budget', JSON.stringify(budgetContainer.innerHTML));
+  localStorage.setItem('budget', JSON.stringify(budgetContainer.innerText));
 
   // expense total
-  localStorage.setItem('expenseTotal', JSON.stringify(totalContainer.innerHTML));
+  localStorage.setItem('expenseTotal', JSON.stringify(totalContainer.innerText));
 
   // list items
-  localStorage.setItem('list' , JSON.stringify(expenseList.li));
-
+  localStorage.setItem('list' , JSON.stringify(expenseList.innerText));
 };
 
 // Load User Data
 function getData() {
-  // income
-  const getIncome = JSON.parse(localStorage.getItem('income'));
-  getIncome.classList = 'newIncome';
-  incomeContainer.innerHTML = '';
-  incomeContainer.append(getIncome);
 
-  // budget
-  const getBudget = JSON.parse(localStorage.getItem('budget'));
-  budgetContainer.innerHTML = '';
-  budgetContainer.append(getBudget);
+  if (typeof(Storage)!=="undefined") {
 
-  // expense total
-  const getExpenseTotal = JSON.parse(localStorage.getItem('expenseTotal'));
-  getExpenseTotal.classList = 'newTotal';
-  totalContainer.innerHTML = '';
-  totalContainer.append(getExpenseTotal);
+    // income
+    const getIncome = JSON.parse(localStorage.getItem('income'));
+    getIncome.classList = 'newIncome';
+    incomeContainer.innerHTML = '';
+    incomeContainer.append(getIncome);
 
-  // list items
-  const getList = localStorage.getItem('list');
-  expenseList.innerHTML = '';
-  expenseList.append(getList);
+    // budget
+    const getBudget = JSON.parse(localStorage.getItem('budget'));
+    budgetContainer.innerHTML = '';
+    budgetContainer.append(getBudget);
+
+    // expense total
+    const getExpenseTotal = JSON.parse(localStorage.getItem('expenseTotal'));
+    getExpenseTotal.classList = 'newTotal';
+    totalContainer.innerHTML = '';
+    totalContainer.append(getExpenseTotal);
+
+    // list items
+    const getList = JSON.parse(localStorage.getItem('list'));
+    expenseList.innerHTML = '';
+    expenseList.append(getList);
+  }
 };
