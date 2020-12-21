@@ -6,11 +6,11 @@ HTML {
 /* budget UI container */
 .budgetWrap {
   position: fixed;
+  display: block;
   left: 22%;
   top: 5%;
   min-width: 55%;
   max-width: 55%;
-  display: block;
   height: 70vh;
   padding: 0px 15px;
   margin: 0 auto;
@@ -21,8 +21,8 @@ HTML {
 
 /* moneybag */
 .moneybag {
-  display: block;
   position: fixed;
+  display: block;
   top: 33%;
   left: 60%;
   width: 4%;
@@ -31,23 +31,23 @@ HTML {
   margin: 0 auto;
 }
 
-/* dollar sign inside budget container */
+/* dollar sign inside expense total contaner*/
 .dollarsign {
   position: fixed;
-  top: 9%;
-  left: 49%;
-  width: 2%;
+  top: 10%;
+  left: 34%;
+  width: 1.7%;
   opacity: 9%;
   z-index: 1;
   image-rendering: auto;
 }
 
-/* dollar sign inside expense total contaner*/
+/* dollar sign inside budget container */
 .dollarsign2 {
   position: fixed;
-  top: 9%;
-  left: 34%;
-  width: 2%;
+  top: 10%;
+  left: 49.5%;
+  width: 1.7%;
   opacity: 9%;
   z-index: 1;
   image-rendering: auto;
@@ -88,23 +88,24 @@ HTML {
 
 #expenseAmount {
   float: right;
-  left: 43.5%;
+  left: 45.7%;
   top: 54vh;
   font-size: xlarge;
   text-align: center;
   font-weight: 600;
-  margin-left: 5vh;
+  margin:auto;
   background-color: lightcyan;
 }
 
 /* Income Input */
 #incomeBox {
   float: right;
-  left: 45.8%;
+  left: 45.7%;
   top: 66vh;
   text-align: center;
   font-size: 18px;
   font-family: monospace;
+  font-weight: 600;
   color: rgb(2, 14, 46);
   background-color: rgb(220, 244, 255);
 }
@@ -112,10 +113,13 @@ HTML {
 /* Expense Total Container */
 #totalContainer {
   position: fixed;
+  display:block;
+  margin: auto;
   left: 31%;
   top: 8vh;
-  padding: 2px 10px;
-  height: 9%;
+  padding-top: 16px;
+  min-height: 8%;
+  max-height: 8%;
   min-width: 7%;
   max-width: 7%;
   text-align: center;
@@ -126,7 +130,7 @@ HTML {
   border: 5px solid rgb(156, 185, 219);
   border-radius: 5px;
   background-color: rgb(220, 244, 255);
-  color: rgb(2, 14, 46);
+  color: rgb(2, 9, 26);
 }
 
 /* Income Container */
@@ -142,8 +146,9 @@ HTML {
   overflow: hidden;
   white-space: nowrap;
   text-align: center;
-  font-size: 18px;
+  font-size: 17px;
   font-family: monospace;
+  font-weight: 600;
   border: 3px dotted rgb(47, 120, 230); 
   background-color: rgb(220, 244, 255);
   color: rgb(2, 14, 46);
@@ -160,11 +165,13 @@ HTML {
 /* User Budget Container */
 #budgetContainer {
   position: fixed;
-  left: 45%;
+  display: block;
+  margin: auto;
+  left: 46%;
   top: 8vh; 
-  padding: 2px 10px;
-  min-height: 9%;
-  max-height: 9%;
+  padding-top: 16px;
+  min-height: 8%;
+  max-height: 8%;
   min-width: 8%;
   max-width: 8%;
   text-align: center;
@@ -176,8 +183,7 @@ HTML {
   border: 5px solid rgb(156, 185, 219);
   border-radius: 5px;
   background-color: rgb(220, 244, 255);
-  color: rgb(2, 14, 46);
-  font-size: 28px;
+  color: rgb(2, 9, 26);
 }
 
 /* Expense List */ 
@@ -194,29 +200,18 @@ UL {
   overflow: hidden; 
   overflow-y: scroll;
   white-space: nowrap;
-  border: 5px solid rgb(156, 199, 219);
+  border: 6px solid rgb(156, 199, 219);
   border-radius: 5px;
 }
 
 li {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
   font-family: monospace;
   color: rgb(18, 73, 99);
-  padding-top: 0.6em;
+  padding-top: 0.1em;
   padding-left: 0.6em;
   padding-bottom: 0.1em;
-}
-
-.getLi {
-    padding: 10px;
-    font-size: 22px;
-    font-weight: 600;
-    font-family: monospace;
-    color: rgb(18, 73, 99);
-    margin-bottom: 4px;
-    margin-left: 15px;
-    padding: 0.5em;
 }
 
 UL li.selected {

@@ -56,7 +56,7 @@ budgetWrapper.appendChild(expenseAmount);
 // Expenses Total Amount Container
 const totalContainer = document.createElement('div');
 totalContainer.id = 'totalContainer';
-totalContainer.title = 'DIsplays total expense costs';
+totalContainer.title = 'Displays total expense costs';
 
 budgetWrapper.appendChild(totalContainer);
 
@@ -127,6 +127,7 @@ function submitExpense () {
 
   // create list item element
   const li = document.createElement('li');
+
   // set new list items to be expense item name / cost inputs
   const inputVal = ('$' + itemCost + ' ' + itemName);
   const txt = document.createTextNode(inputVal);
@@ -215,7 +216,6 @@ function submitExpense () {
 
       totalContainer.innerHTML = '';
       totalContainer.append(newAmount);
-      console.log(newAmount);
       console.log('Expense Total Updated');
     }
   }
@@ -237,6 +237,7 @@ function calculateBudget () {
   budgetContainer.append(newTotal); // append new value
   budgetContainer.prepend("$");
   console.log(newTotal);
+  
 };
 
 // DELETE EXPENSE Function
@@ -255,40 +256,40 @@ function clearTotalAmount () {
 // Save User Data
 function saveData () {
   // income
-  localStorage.setItem('income' , incomeContainer.innerHTML);
+  localStorage.setItem('income' , JSON.stringify(incomeContainer.innerHTML));
 
   // budget
-  localStorage.setItem('budget', budgetContainer.innerHTML);
+  localStorage.setItem('budget', JSON.stringify(budgetContainer.innerHTML));
 
   // expense total
-  localStorage.setItem('expenseTotal', totalContainer.innerHTML);
+  localStorage.setItem('expenseTotal', JSON.stringify(totalContainer.innerHTML));
 
   // list items
-  localStorage.setItem('list' , document.body.UL.li);
+  localStorage.setItem('list' , JSON.stringify(expenseList.li));
+
 };
 
 // Load User Data
 function getData() {
   // income
-  const getIncome = localStorage.getItem('income');
+  const getIncome = JSON.parse(localStorage.getItem('income'));
   getIncome.classList = 'newIncome';
   incomeContainer.innerHTML = '';
   incomeContainer.append(getIncome);
 
   // budget
-  const getBudget = localStorage.getItem('budget');
+  const getBudget = JSON.parse(localStorage.getItem('budget'));
   budgetContainer.innerHTML = '';
   budgetContainer.append(getBudget);
 
   // expense total
-  const getExpenseTotal = localStorage.getItem('expenseTotal');
+  const getExpenseTotal = JSON.parse(localStorage.getItem('expenseTotal'));
   getExpenseTotal.classList = 'newTotal';
   totalContainer.innerHTML = '';
   totalContainer.append(getExpenseTotal);
 
   // list items
   const getList = localStorage.getItem('list');
-  
-  expenseList.innerText = '';
+  expenseList.innerHTML = '';
   expenseList.append(getList);
 };
