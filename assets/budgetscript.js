@@ -92,7 +92,7 @@ function submitIncome () {
     
     // if income's first value is 0 and next value is > 0,
     // then slice all 0 until value reads > 0
-  } else if (newIncome[0] == 0 && newIncome[1].match(regExNumbers)) {
+  } else if (newIncome[0] = 0 && newIncome[1].match(regExNumbers)) {
     incomeContainer.innerHTML = '';
     incomeContainer.textContent = '';
     newIncome.replaceAll(/^0+/g, '');
@@ -127,6 +127,7 @@ function submitExpense () {
 
   // create list item element
   const li = document.createElement('li');
+  li.classList = 'li';
 
   // set new list items to be expense item name / cost inputs
   const inputVal = ('$' + itemCost + ' ' + itemName);
@@ -231,12 +232,12 @@ function calculateBudget () {
   total = parseFloat(totalContainer.innerHTML.substring(1));
   console.log(total);
 
-  const newTotal = (newIncome - total);
-  newTotal.classList = 'newTotal';
+  const newBudget = (newIncome - total);
+  newBudget.classList = 'newBudget';
   budgetContainer.innerHTML = ''; // clear old value
-  budgetContainer.append(newTotal); // append new value
+  budgetContainer.append(newBudget); // append new value
   budgetContainer.prepend("$");
-  console.log(newTotal);
+  console.log(newBudget);
 };
 
 // DELETE EXPENSE Function
@@ -264,34 +265,41 @@ function saveData () {
   localStorage.setItem('expenseTotal', JSON.stringify(totalContainer.innerText));
 
   // list items
-  localStorage.setItem('list' , JSON.stringify(expenseList.innerText));
+  localStorage.setItem('list' , JSON.stringify(expenseList.innerHTML));
 };
 
 // Load User Data
 function getData() {
-
-  if (typeof(Storage)!=="undefined") {
+  
+  if (typeof (Storage)!== void(0)) {
 
     // income
     const getIncome = JSON.parse(localStorage.getItem('income'));
-    getIncome.classList = 'newIncome';
     incomeContainer.innerHTML = '';
+    incomeContainer.innerText = '';
     incomeContainer.append(getIncome);
 
     // budget
     const getBudget = JSON.parse(localStorage.getItem('budget'));
     budgetContainer.innerHTML = '';
+    budgetContainer.innerText = '';
     budgetContainer.append(getBudget);
 
     // expense total
     const getExpenseTotal = JSON.parse(localStorage.getItem('expenseTotal'));
-    getExpenseTotal.classList = 'newTotal';
     totalContainer.innerHTML = '';
     totalContainer.append(getExpenseTotal);
 
     // list items
-    const getList = JSON.parse(localStorage.getItem('list'));
+    const makeLi = document.createElement('li');
+    var getList = JSON.parse(localStorage.getItem('list'));
+    getList.classList = 'li';
+    makeLi.innerHTML = getList;
+        
     expenseList.innerHTML = '';
-    expenseList.append(getList);
+    expenseList.append(makeLi);
+
+  } else {
+    alert("Unable to save data to localStorage");
   }
 };

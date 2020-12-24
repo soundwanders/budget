@@ -1,0 +1,22 @@
+{
+  "name": "broop",
+  "version": "1.0.0",
+  "description": "budget package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soundwanders/budget.git"
+  },
+  "keywords": [
+    "[]"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soundwanders/budget/issues"
+  },
+  "homepage": "https://github.com/soundwanders/budget#readme"
+}
