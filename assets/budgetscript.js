@@ -21,14 +21,14 @@ const setIncome = document.createElement('input');
 setIncome.classList.add('inputs');
 setIncome.id = 'incomeBox';
 setIncome.setAttribute('type', 'text');
-setIncome.title = 'Monthly income goes here!';
+setIncome.title = 'Enter monthly income here';
 
 budgetWrapper.appendChild(incomeContainer);
 budgetWrapper.appendChild(setIncome);
 
 // Budget Balance Container
-// create a form that will display user's budget
-const budgetContainer = document.createElement('form');
+// create a div that will display user's budget
+const budgetContainer = document.createElement('div');
 budgetContainer.id = ('budgetContainer');
 budgetContainer.setAttribute('type', 'text');
 budgetContainer.textContent = '';
@@ -41,7 +41,7 @@ const expenseName = document.createElement('input');
 expenseName.classList.add('inputs');
 expenseName.id = 'expenseName';
 expenseName.setAttribute('type', 'text');
-expenseName.title = 'Expense name goes here!';
+expenseName.title = 'Enter expense name here';
 
 budgetWrapper.appendChild(expenseName);
 
@@ -49,7 +49,7 @@ const expenseAmount = document.createElement('input');
 expenseAmount.classList.add('inputs');
 expenseAmount.id = 'expenseAmount';
 expenseAmount.setAttribute('type', 'text');
-expenseAmount.title = 'Expense cost goes here!';
+expenseAmount.title = 'Enter expense cost here';
 
 budgetWrapper.appendChild(expenseAmount);
 
@@ -64,7 +64,7 @@ budgetWrapper.appendChild(totalContainer);
 // create global expenseList to be called in functions
 const expenseList = document.createElement('UL');
 expenseList.setAttribute('id', 'expenseUL');
-expenseList.title = 'List of Expenses';
+expenseList.title = 'Expense List';
 
 budgetWrapper.appendChild(expenseList);
 
@@ -142,6 +142,33 @@ function submitExpense () {
     expenseAmount.innerHTML = '';
     return;
 
+    // if expense value first num is 0 and next value is a number != 0
+    // parseInt itemCost with radix of 10 to remove all zeroes at start of string
+  } else if (itemCost[0] == 0 && itemCost[1].match(regExNumbers)) {
+    var x = ("$" + parseInt(itemCost, 10));
+    //parseFloat(itemCost);
+    li.append(x);
+    expenseList.appendChild(li);
+
+    expenseName.value = '';
+    expenseName.innerHTML = '';
+    expenseAmount.value = '';
+    expenseAmount.innerHTML = '';
+
+    // else if itemCost begins with a space and next value is a number
+    // use regular expression to remove all white space.
+    // assigned as global so it searches entire string
+    // instead of stopping after first white space is returned
+  } else if (itemCost[0] == ' ') {
+    itemCost.replace(/' '/g , '');
+    parseFloat(itemCost);
+    expenseList.appendChild(li);
+
+    expenseName.value = '';
+    expenseName.innerHTML = '';
+    expenseAmount.value = '';
+    expenseAmount.innerHTML = '';
+
   } else if (!itemCost.match(regExNumbers)) {
     alert('Expense cost must be all numbers and cannot be empty');
     // clear expense input fields
@@ -150,30 +177,6 @@ function submitExpense () {
     expenseAmount.value = '';
     expenseAmount.innerHTML = '';
     return;
-
-    // if expense value first num is 0 and next value is != 0 ,
-    // then slice 0, parseFloat cost and append to list
-  } else if (itemCost[0] == 0 && itemCost[1].match(regExNumbers)) {
-    itemCost.slice[0];
-    parseFloat(itemCost);
-    expenseList.appendChild(li);
-
-    expenseName.value = '';
-    expenseName.innerHTML = '';
-    expenseAmount.value = '';
-    expenseAmount.innerHTML = '';
-
-    // else if itemCost begins with a space and next value is a number ,
-    // then slice all spaces, parseFloat cost and append to list
-  } else if (itemCost[0] == ' ' && itemCost[1].match(regExNumbers)) {
-    itemCost.slice[0];
-    parseFloat(itemCost);
-    expenseList.appendChild(li);
-
-    expenseName.value = '';
-    expenseName.innerHTML = '';
-    expenseAmount.value = '';
-    expenseAmount.innerHTML = '';
 
   } else {
     li.appendChild(txt);
@@ -225,19 +228,23 @@ function submitExpense () {
 
 // CALCULATE USER BUDGET Function
 function calculateBudget () {
-  income = incomeContainer.innerHTML.substring(1);
+  income = incomeContainer.innerHTML.substr(1);
   newIncome = parseFloat(income);
-  console.log(newIncome);
 
-  total = parseFloat(totalContainer.innerHTML.substring(1));
-  console.log(total);
+  if (isNaN(newIncome)) {
+    console.log(newIncome);
+    income = '';
 
-  const newBudget = (newIncome - total);
-  newBudget.classList = 'newBudget';
-  budgetContainer.innerHTML = ''; // clear old value
-  budgetContainer.append(newBudget); // append new value
-  budgetContainer.prepend("$");
-  console.log(newBudget);
+  } else {
+    total = parseFloat(totalContainer.innerHTML.substr(1));
+    console.log(total);
+
+    const newBudget = (newIncome - total);
+    budgetContainer.innerHTML = ''; // clear old value
+    budgetContainer.append(newBudget); // append new value
+    budgetContainer.prepend("$");
+    console.log(newBudget);
+  }
 };
 
 // DELETE EXPENSE Function
