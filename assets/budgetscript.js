@@ -6,7 +6,7 @@ const budgetWrapper = document.querySelector('.budgetWrap');
 // regular expressions to check for numbers, letters
 // used in 'submit' functions to validate input values before appending
 regExNumbers = /^\d+$/;
-regExLetters = /^[A-Z ' a-z]+$/;
+regExLetters = /^[A-Z' a-z]+$/;
 
 // Income Container
 // create div to display income
@@ -82,35 +82,20 @@ getList.addEventListener('click', function (ev) {
 function submitIncome () {
   newIncome = document.getElementById('incomeBox').value;
   newIncome.classList = 'newIncome';
-  const monthlyIncome = ('$' + newIncome + '/month');
+  newIncome.replace(/' '/g , '');
+  var monthlyIncome = ('$' +  parseInt(newIncome, 10) + '/month');
 
   if (newIncome == 0 || '') {
     alert('Income amount cannot be zero or empty');
-  
-  } else if (!newIncome.match(regExNumbers)) {
-    alert('Income amount must be a number');
-    
-    // if income's first value is 0 and next value is > 0,
-    // then slice all 0 until value reads > 0
-  } else if (newIncome[0] = 0 && newIncome[1].match(regExNumbers)) {
-    incomeContainer.innerHTML = '';
-    incomeContainer.textContent = '';
-    newIncome.replaceAll(/^0+/g, '');
-    incomeContainer.append(monthlyIncome);
-    console.log('Income submitted');
 
-    // else if itemCost begins or ends with a 'space' ,
-    // then slice all white space , parseFloat and append income
-  } else if (newIncome[0] == ' ' && newIncome[1].match(regExNumbers)) {
-    incomeContainer.innerHTML = '';
-    incomeContainer.textContent = '';
-    parseFloat(newIncome);
-    incomeContainer.append(monthlyIncome);
-    console.log('Income submitted');
+  } else if (isNaN(newIncome)) {
+      console.log(newIncome);
+      console.log("Entry invalid, income returned as NaN");
 
   } else {
     incomeContainer.innerHTML = '';
-    incomeContainer.textContent = '';
+    incomeContainer.value = '';
+
     incomeContainer.append(monthlyIncome);
     console.log('Income submitted');
 
@@ -120,7 +105,7 @@ function submitIncome () {
   }
 };
 
-// SUBMIT EXPENSE ITEM Function
+// SUBMIT EXPENSE Function
 function submitExpense () {
   itemName = document.getElementById('expenseName').value;
   itemCost = document.getElementById('expenseAmount').value;
@@ -134,7 +119,7 @@ function submitExpense () {
   const txt = document.createTextNode(inputVal);
 
   if (!itemName.match(regExLetters)) {
-    alert('Invalid. Expense name must not be empty and may only contain letters.');
+    alert('Expense name must not be empty and may only contain letters.');
     // clear expense input fields
     expenseName.value = '';
     expenseName.innerHTML = '';
@@ -145,7 +130,7 @@ function submitExpense () {
     // if expense value first num is 0 and next value is a number != 0
     // parseInt itemCost with radix of 10 to remove all zeroes at start of string
   } else if (itemCost[0] == 0 && itemCost[1].match(regExNumbers)) {
-    var x = ("$" + parseInt(itemCost, 10));
+    var x = ('$' + parseInt(itemCost, 10) + ' ' + itemName);
     //parseFloat(itemCost);
     li.append(x);
     expenseList.appendChild(li);
@@ -162,6 +147,7 @@ function submitExpense () {
   } else if (itemCost[0] == ' ') {
     itemCost.replace(/' '/g , '');
     parseFloat(itemCost);
+    li.append(itemName + itemCost);
     expenseList.appendChild(li);
 
     expenseName.value = '';
@@ -242,7 +228,7 @@ function calculateBudget () {
     const newBudget = (newIncome - total);
     budgetContainer.innerHTML = ''; // clear old value
     budgetContainer.append(newBudget); // append new value
-    budgetContainer.prepend("$");
+    budgetContainer.prepend('$');
     console.log(newBudget);
   }
 };
@@ -259,7 +245,7 @@ function clearTotalAmount () {
   console.log("Expense total amount has been reset");
 };
 
-// LOCAL STORAGE , SAVE AND LOAD USER DATA
+// LOCAL STORAGE , SAVE & LOAD BUDGET VALUES Functions
 // Save User Data
 function saveData () {
   // income
@@ -283,13 +269,11 @@ function getData() {
     // income
     const getIncome = JSON.parse(localStorage.getItem('income'));
     incomeContainer.innerHTML = '';
-    incomeContainer.innerText = '';
     incomeContainer.append(getIncome);
 
     // budget
     const getBudget = JSON.parse(localStorage.getItem('budget'));
     budgetContainer.innerHTML = '';
-    budgetContainer.innerText = '';
     budgetContainer.append(getBudget);
 
     // expense total
@@ -302,7 +286,6 @@ function getData() {
     var getList = JSON.parse(localStorage.getItem('list'));
     getList.classList = 'li';
     makeLi.innerHTML = getList;
-        
     expenseList.innerHTML = '';
     expenseList.append(makeLi);
 
