@@ -20,9 +20,9 @@ User is able to save data in their browser using local storage. JSON used to str
 List elements, when being loaded from local storage, were parsed as either plain-text strings or strings that displayed the HTML tags and did not maintain CSS style. 
 <br><br>
 To solve the problem, I created a list item variable that is an empty 'li', this variable is separate from the user's local storage data that is being parsed when Loading. I then assigned the loaded string's class as 'li' so it is stylized like the other 'li' class items. 
-<br>
+<br><br>
 After re-creating the loaded string as a list item so it can be assigned the appropriate tags for CSS styling, the innerHTML of the empty list item variable is assigned to be the value of the data loaded from local storage.
-<br>
+<br><br>
 Basically, by recreating each list item and setting its value and class to be the same as the other list items, the list items could be recognized as a list item with class 'li' in the CSS stylesheet and then formatted the same as all of the other list items.
 <br>
 <br>
