@@ -1,7 +1,6 @@
 
-<a href = "https://soundwanders.github.io/budget/"> <h3>Simple Monthly Budget Calculator</h3> </a>
-<br><br>
-
+<a href = "https://soundwanders.github.io/budget/"> <h2>Simple Monthly Budget Calculator</h3> </a>
+<br>
 <h3>Project Notes</h3>
 The user is able to input their monthly income, create a list of expenses and calculate their remaining budget.
 <br><br>
