@@ -7,8 +7,10 @@ The user is able to input their monthly income, create a list of expenses and ca
 Each input container holds user input and appends the data to the appropriate container using the Submit buttons.<br>
 The monthly income is a local variable that consists of the user input, plus text labels to create a more readable display.
 <br><br>
+'''
 Example: User inputs 5000 for monthly income, the page displays $5000 / month. <br>
 The expense list is an unordered list that holds all expenses. Two input containers, expense cost and expense name, are combined into one variable and then appended to the list.
+'''
 <br><br>
 Regular expressions are used to check all user inputs for correct values. The submit functions use boolean checks to run the values against the regular expression requirements.<br>
 All income submissions must contain only numbers and the expense item names must contain only texts. Spaces are allowed in the expense name field for instances such as "Dunkin Donuts"
