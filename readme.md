@@ -1,4 +1,5 @@
-Simple Monthly Budget Calculator
+
+<a href = "https://soundwanders.github.io/budget/"> </h>Simple Monthly Budget Calculator</h3> </a>
 <br><br>
 
 <h3>Project Notes</h3>
@@ -29,5 +30,3 @@ Basically, by recreating each list item and setting its value and class to be th
 There are no servers or databases involved in this project. It is all run through Localhost and hosted on Github Pages as a static web app.
 <br>
 <br>
-
-<a href = "https://soundwanders.github.io/budget/">Visit Budget App</a>
