@@ -12,8 +12,8 @@ Example: User inputs 5000 for monthly income, the page displays $5000 / month. <
 The expense list is an unordered list that holds all expenses. Two input containers, expense cost and expense name, are combined into one variable and then appended to the list.
 ```
 <br><br>
-Regular expressions are used to check all user inputs for correct values. The submit functions use boolean checks to run the values against the regular expression requirements.<br>
---All income submissions must contain only numbers and the expense item names must contain only texts.
+---**Regular expressions** are used to check all user inputs for correct values. The submit functions use boolean checks to run the values against the regular expression requirements.<br>
+  -All income submissions must contain only numbers and the expense item names must contain only texts.
   -Spaces are allowed in the expense name field for instances such as "Dunkin Donuts"
 <br><br>
 ---The budget is calculated by subtracting the expense total costs from the monthly income. Called substring(1) of the user's monthly income to eliminate the dollar sign at the beginning of the string ($5000 / month).
@@ -28,8 +28,6 @@ Regular expressions are used to check all user inputs for correct values. The su
 <br><br>
 ---After re-creating the loaded string as a list item so it can be assigned the appropriate tags for CSS styling, the innerHTML of the empty list item variable is assigned to be the value of the data loaded from local storage.
 <br><br>
-<br>
-<br>
 ---There are no servers or databases involved in this project. It is all run through Localhost and is hosted on Github Pages as a static web app.
 <br>
 <br>
