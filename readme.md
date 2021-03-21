@@ -1,5 +1,5 @@
 
-<a href = "https://soundwanders.github.io/budget/"> </h3>Simple Monthly Budget Calculator</h3> </a>
+<a href = "https://soundwanders.github.io/budget/"> <h3>Simple Monthly Budget Calculator</h3> </a>
 <br><br>
 
 <h3>Project Notes</h3>
