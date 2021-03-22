@@ -1,6 +1,5 @@
 ## Simple Monthly Budget Calculator
 
-## Project Notes
 - The user is able to input their monthly income, create a list of expenses and calculate their remaining budget.
 - Each input container holds user input and appends the data to the appropriate container using the Submit buttons.
 - The monthly income is a local variable that consists of the user input, plus text labels to create a more readable display.
