@@ -9,12 +9,19 @@
 - Regular expressions are used to check all user inputs for correct values. The submit functions use boolean checks to run the values against the regular expression requirements.
 - All income submissions must contain only numbers and the expense item names must contain only texts.
     - Spaces are allowed in the expense name field for instances such as "Dunkin Donuts"
-- The budget is calculated by subtracting the expense total costs from the monthly income. Called substring(1) of the user's monthly income to eliminate the dollar sign at the beginning of the string ($5000 / month).
-    - After removing the dollar sign, the string can successfully be parsed as an integer without encountering error, because the dollar sign is not an integer and cannot be parsed.
+- The budget is calculated by subtracting the expense total costs from the monthly income.
 - User is able to save data in their browser using local storage. JSON used to stringify and parse the budget data.
-- List elements, when being loaded from local storage, were parsed as either plain-text strings or strings that displayed the HTML tags and did not maintain CSS style. 
-    - To solve the problem, I created a list item variable that is an empty 'li', this variable is separate from the user's local storage data that is being parsed when Loading. I then assigned the loaded string's class as 'li' so it is stylized like the other 'li' class items. 
-    - By recycling the inner HTML of the saved list items into a new list item with proper class, the list items could be recognized as a list item with class 'li' within the CSS stylesheet and then formatted the same as all of the other list items.
-- There are no servers or databases involved in this project. It is all run through Localhost and the content is static because it is hosted by Github Pages
+- There are no servers or databases involved in this project because Github Pages only supports static content. It is all run through Localhost using Javascript's localStorage to sava data in the browser.
+- **Obstacle**:
+    - Unable to parse the income as an integer because of the dollar sign in the beginning, leading to NaN error.
+- **Solution**:
+    - Called substring(1) of the user's monthly income to eliminate the dollar sign at the beginning of the string ($5000 / month).
+    - After removing the dollar sign, the string can successfully be parsed as an integer without returning NaN.
+- **Obstacle:**
+    - List elements, when being loaded from local storage using JSON, were being parsed as plain-text strings that did not maintain CSS style because it was not processed as a DOM list item (li) object.
+- **Solution:**
+    - I created an unassigned list item variable that is a placeholder DOM li object. This variable is separate from the stored JSON data that was causing the problem.
+    - Assigned the empty list item's class to match the list item styling so that it was recognized as a list item and styled correctly.
+    - Appended the inner HTML of the saved list items (plain-text, not styled) into the new list item variables with class 'li', completing the process of re-creating the list item so that it is able to be recognized as DOM list item rather than loaded as a style-less string.
 
 <a href = "https://soundwanders.github.io/budget/"></a>
