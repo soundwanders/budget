@@ -1,4 +1,4 @@
-<a href = "https://soundwanders.github.io/budget/">Simple Monthly Budget Calculator</a>
+<a href = "https://soundwanders.github.io/budget/"><h1>Simple Monthly Budget Calculator<h1></a>
 
 - The user is able to input their monthly income, create a list of expenses and calculate their remaining budget.
 - Each input container holds user input and appends the data to the appropriate container using the Submit buttons.
