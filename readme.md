@@ -12,7 +12,7 @@
 - The budget is calculated by subtracting the expense total costs from the monthly income.
 - User is able to save data in their browser using local storage. JSON used to stringify and parse the budget data.
 - There are no servers or databases involved in this project because Github Pages only supports static content. It is all run through Localhost using Javascript's localStorage to sava data in the browser.
-
+____________________________________________________________________________________________________________________________________________
 - **Obstacle**:
     - Unable to parse the income as an integer because of the dollar sign in the beginning, leading to NaN error.
 - **Solution**:
