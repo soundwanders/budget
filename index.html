@@ -5,13 +5,14 @@
         <meta name="description" content="budget">
         <meta name="keywords" content="HTML, CSS, JavaScript, Budget">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="assets/budgetstyle.css">
-        <!-- Favicons -->
+
         <link rel="icon" type="image/png" sizes="32x32" href="/android-chrome-512x512.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
         <link rel="shortcut icon" href="favicon.ico">
+
+        <link rel="stylesheet" type="text/css" href="assets/index.css">
 </head>
 
 <title>
@@ -19,20 +20,22 @@ Simple Budget
 </title>
 
 <body>
-<div class = "budgetWrap">
+<div class = "budgetWrapper">
 
     <img class = "moneybag" src="assets/moneybag.png">
     <img class = "dollarsign" src="assets/dollarsign.png">
     <img class = "dollarsign2" src="assets/dollarsign.png">
 
     <!-- Colored columns -->
-    <div id = "columnone"></div>
-    <div id = "columntwo"></div>
-    <div id = "columnthree"></div>
-    <div id = "columnfour"></div>
-    <div id = "columnfive"></div>
-    <div id = "columnsix"></div>
-    <div id = "columnseven"></div>
+    <div class="columns">
+        <div id = "columnone"></div>
+        <div id = "columntwo"></div>
+        <div id = "columnthree"></div>
+        <div id = "columnfour"></div>
+        <div id = "columnfive"></div>
+        <div id = "columnsix"></div>
+        <div id = "columnseven"></div>
+    </div>
 
     <!-- Buttons used to activate Javascript functions-->
     <div class="buttons">
@@ -60,6 +63,6 @@ Simple Budget
     </a>
 </footer>
 
-<script src = "assets/budgetscript.js"></script>
+<script src = "assets/index.js"></script>
 
 </html>

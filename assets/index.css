@@ -1,14 +1,23 @@
 /* budgetstyle.css */
-HTML {
+html {
   background-color:darkslategrey;
 }
 
+html, body {
+  max-width: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
 /* budget UI container */
-.budgetWrap {
-  position: fixed;
-  display: block;
-  left: 22%;
-  top: 5%;
+.budgetWrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  position: absolute;
+  justify-content: center;
   min-width: 55%;
   max-width: 55%;
   height: 70vh;
@@ -17,6 +26,10 @@ HTML {
   border: 6px solid cornsilk;
   border-radius: 2%;
   background-color: ivory;
+  margin: 0 auto;
+  overflow: hidden;
+  left: 22%;
+  top: 5%;
 }
 
 /* moneybag */
@@ -374,7 +387,6 @@ UL li.selected {
 }
 
 /* Three Colored Columns */
-
 /* column one is invisible */
 #columnone {
   position: absolute;

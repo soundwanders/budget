@@ -1,7 +1,6 @@
 // budgetscript.js
 
-// get div budgetWrapper, which acts as a canvas for UI design elements
-const budgetWrapper = document.querySelector('.budgetWrap');
+const wrapper = document.querySelector('.budgetWrapper');
 
 // regular expressions to check for numbers, letters
 // used in 'submit' functions to validate input values before appending
@@ -23,8 +22,8 @@ setIncome.id = 'incomeBox';
 setIncome.setAttribute('type', 'text');
 setIncome.title = 'Enter monthly income here';
 
-budgetWrapper.appendChild(incomeContainer);
-budgetWrapper.appendChild(setIncome);
+wrapper.appendChild(incomeContainer);
+wrapper.appendChild(setIncome);
 
 // Budget Balance Container
 // create a div that will display user's budget
@@ -34,7 +33,7 @@ budgetContainer.setAttribute('type', 'text');
 budgetContainer.textContent = '';
 budgetContainer.title = 'Displays monthly budget';
 
-budgetWrapper.appendChild(budgetContainer);
+wrapper.appendChild(budgetContainer);
 
 // Expense Name and Amount Input Boxes
 const expenseName = document.createElement('input');
@@ -43,7 +42,7 @@ expenseName.id = 'expenseName';
 expenseName.setAttribute('type', 'text');
 expenseName.title = 'Enter expense name here';
 
-budgetWrapper.appendChild(expenseName);
+wrapper.appendChild(expenseName);
 
 const expenseAmount = document.createElement('input');
 expenseAmount.classList.add('inputs');
@@ -51,14 +50,14 @@ expenseAmount.id = 'expenseAmount';
 expenseAmount.setAttribute('type', 'text');
 expenseAmount.title = 'Enter expense cost here';
 
-budgetWrapper.appendChild(expenseAmount);
+wrapper.appendChild(expenseAmount);
 
 // Expenses Total Amount Container
 const totalContainer = document.createElement('div');
 totalContainer.id = 'totalContainer';
 totalContainer.title = 'Displays total expense costs';
 
-budgetWrapper.appendChild(totalContainer);
+wrapper.appendChild(totalContainer);
 
 // Expense List Container
 // create global expenseList to be called in functions
@@ -66,7 +65,7 @@ const expenseList = document.createElement('UL');
 expenseList.setAttribute('id', 'expenseUL');
 expenseList.title = 'Expense List';
 
-budgetWrapper.appendChild(expenseList);
+wrapper.appendChild(expenseList);
 
 // Add class 'Selected' to list items when clicked
 const getList = document.querySelector('UL');
