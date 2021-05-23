@@ -11,7 +11,7 @@
     - Spaces are allowed in the expense name field for instances such as "Dunkin Donuts"
 - The budget is calculated by subtracting the expense total costs from the monthly income.
 - User is able to save data in their browser using local storage. JSON used to stringify and parse the budget data.
-- There are no servers or databases involved in this project because Github Pages only supports static content. It is all run through Localhost using Javascript's localStorage to sava data in the browser.
+- There are no servers or databases involved in this project, it is all static content deployed on Pages.
 ____________________________________________________________________________________________________________________________________________
 - **Obstacle**:
     - Unable to parse the income as an integer because of the dollar sign in the beginning, leading to NaN error.
