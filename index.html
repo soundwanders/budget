@@ -2,9 +2,9 @@
 <html>
 <head>
         <meta charset="UTF-8">
-        <meta name="description" content="budget">
-        <meta name="keywords" content="HTML, CSS, JavaScript, Budget">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A simple budget application built with JavaScript.">
+        <meta name="keywords" content="HTML, CSS, JavaScript, Budget, Expense, Tracker">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
         <link rel="icon" type="image/png" sizes="32x32" href="/android-chrome-512x512.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png">
@@ -21,20 +21,18 @@ Simple Budget
 
 <body>
 <div class = "budgetWrapper">
-
     <img class = "moneybag" src="assets/moneybag.png">
     <img class = "dollarsign" src="assets/dollarsign.png">
     <img class = "dollarsign2" src="assets/dollarsign.png">
 
     <!-- Colored columns -->
     <div class="columns">
-        <div id = "columnone"></div>
-        <div id = "columntwo"></div>
-        <div id = "columnthree"></div>
-        <div id = "columnfour"></div>
-        <div id = "columnfive"></div>
-        <div id = "columnsix"></div>
-        <div id = "columnseven"></div>
+        <div id = "columnOne"></div>
+        <div id = "columnTwo"></div>
+        <div id = "columnThree"></div>
+        <div id = "columnFour"></div>
+        <div id = "columnFive"></div>
+        <div id = "columnSix"></div>
     </div>
 
     <!-- Buttons used to activate Javascript functions-->
@@ -45,7 +43,7 @@ Simple Budget
 
         <button class = "btn" id = "submitExpense" title = "Submit New Expense" onclick = "submitExpense()">Submit Expense</button>
 
-        <button class = "btn" id = "removeExpense" title = "Delete Selected Expense Item" onclick = "deleteExpense()" >Delete Expense</button>
+        <button class = "btn" id = "removeExpense" title = "Delete Selected Expense Item" onclick = "deleteExpense()" >Delete</button>
  
         <button class = "btn" id = "clearExpenseTotal" title = "Clear Total Expense Amount" onclick = "clearTotalAmount()">Clear<br>Total</button>
 
@@ -55,14 +53,16 @@ Simple Budget
     </div>
 
 </div>
+
+
+<script src = "assets/index.js"></script>
+<noscript>Please enable JavaScript to load this app.</noscript>
 </body>
 
 <footer class="foot">
     <a href="https://github.com/soundwanders/budget" target="_blank" style="text-underline-offset: 6px; color:rgb(255, 255, 255)">
-    Github Repo
+    &circledast;
     </a>
 </footer>
-
-<script src = "assets/index.js"></script>
 
 </html>

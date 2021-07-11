@@ -1,69 +1,68 @@
-// budgetscript.js
-
 const wrapper = document.querySelector('.budgetWrapper');
 
-// regular expressions to check for numbers, letters
-// used in 'submit' functions to validate input values before appending
+// regular expressions to check for valid numbers / letters in input fields
+// reg exp used in 'submit' functions to validate input values before appending anyything
 regExNumbers = /^\d+$/;
 regExLetters = /^[A-Z' a-z]+$/;
 
 // Income Container
 // create div to display income
 const incomeContainer = document.createElement('div');
-incomeContainer.id = 'incomeContainer';
-incomeContainer.setAttribute('type', 'text');
-incomeContainer.textContent = '';
-incomeContainer.title = 'Displays monthly income';
+  incomeContainer.id = 'incomeContainer';
+  incomeContainer.setAttribute('type', 'text');
+  incomeContainer.textContent = '';
+  incomeContainer.title = 'Displays monthly income';
+
+wrapper.appendChild(incomeContainer);
 
 // Income Input Box
 const setIncome = document.createElement('input');
-setIncome.classList.add('inputs');
-setIncome.id = 'incomeBox';
-setIncome.setAttribute('type', 'text');
-setIncome.title = 'Enter monthly income here';
+  setIncome.classList.add('inputs');
+  setIncome.id = 'incomeBox';
+  setIncome.setAttribute('type', 'text');
+  setIncome.title = 'Enter monthly income here';
 
-wrapper.appendChild(incomeContainer);
 wrapper.appendChild(setIncome);
 
 // Budget Balance Container
 // create a div that will display user's budget
 const budgetContainer = document.createElement('div');
-budgetContainer.id = ('budgetContainer');
-budgetContainer.setAttribute('type', 'text');
-budgetContainer.textContent = '';
-budgetContainer.title = 'Displays monthly budget';
+  budgetContainer.id = ('budgetContainer');
+  budgetContainer.setAttribute('type', 'text');
+  budgetContainer.textContent = '';
+  budgetContainer.title = 'Displays monthly budget';
 
 wrapper.appendChild(budgetContainer);
 
 // Expense Name and Amount Input Boxes
 const expenseName = document.createElement('input');
-expenseName.classList.add('inputs');
-expenseName.id = 'expenseName';
-expenseName.setAttribute('type', 'text');
-expenseName.title = 'Enter expense name here';
+  expenseName.classList.add('inputs');
+  expenseName.id = 'expenseName';
+  expenseName.setAttribute('type', 'text');
+  expenseName.title = 'Enter expense name here';
 
 wrapper.appendChild(expenseName);
 
 const expenseAmount = document.createElement('input');
-expenseAmount.classList.add('inputs');
-expenseAmount.id = 'expenseAmount';
-expenseAmount.setAttribute('type', 'text');
-expenseAmount.title = 'Enter expense cost here';
+  expenseAmount.classList.add('inputs');
+  expenseAmount.id = 'expenseAmount';
+  expenseAmount.setAttribute('type', 'text');
+  expenseAmount.title = 'Enter expense cost here';
 
 wrapper.appendChild(expenseAmount);
 
 // Expenses Total Amount Container
 const totalContainer = document.createElement('div');
-totalContainer.id = 'totalContainer';
-totalContainer.title = 'Displays total expense costs';
+  totalContainer.id = 'totalContainer';
+  totalContainer.title = 'Displays total expense costs';
 
 wrapper.appendChild(totalContainer);
 
 // Expense List Container
 // create global expenseList to be called in functions
 const expenseList = document.createElement('UL');
-expenseList.setAttribute('id', 'expenseUL');
-expenseList.title = 'Expense List';
+  expenseList.setAttribute('id', 'expenseUL');
+  expenseList.title = 'Expense List';
 
 wrapper.appendChild(expenseList);
 
@@ -195,12 +194,12 @@ function submitExpense () {
 
     } else {
       const oldAmount = parseFloat(totalContainer.innerText);
-      console.log('V - Previous Expense Total Amount Blow');
+      console.log('V - Previous Expense Total Amount...');
       console.log(oldAmount);
 
       const newAmount = (oldAmount + amount);
       newAmount.id = 'expenseDisplay';
-      console.log('V - Updated Expense Total Amount Below');
+      console.log('V - Updated Expense Total Amount...');
       console.log(newAmount);
 
       totalContainer.innerHTML = '';
@@ -225,9 +224,9 @@ function calculateBudget () {
     console.log(total);
 
     const newBudget = (newIncome - total);
-    budgetContainer.innerHTML = ''; // clear old value
-    budgetContainer.append(newBudget); // append new value
-    budgetContainer.prepend('$');
+      budgetContainer.innerHTML = ''; // clear old value
+      budgetContainer.append(newBudget); // append new value
+      budgetContainer.prepend('$');
     console.log(newBudget);
   }
 };
