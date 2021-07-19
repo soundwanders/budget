@@ -194,17 +194,15 @@ function submitExpense () {
 
     } else {
       const oldAmount = parseFloat(totalContainer.innerText);
-      console.log('V - Previous Expense Total Amount...');
-      console.log(oldAmount);
+      console.log('Previous Expense Total Amount: ' , oldAmount);
 
       const newAmount = (oldAmount + amount);
       newAmount.id = 'expenseDisplay';
-      console.log('V - Updated Expense Total Amount...');
-      console.log(newAmount);
+      console.log('V - Updated Expense Total Amount: ' , newAmount);
 
       totalContainer.innerHTML = '';
       totalContainer.append(newAmount);
-      console.log('Expense Total Updated');
+      console.log('Expense Total Updated: ' , totalContainer.innerHTML);
     }
   }
   refreshTotal();
@@ -288,6 +286,6 @@ function getData() {
     expenseList.append(makeLi);
 
   } else {
-    alert("Unable to save data to localStorage");
+    alert("Unable to save data to browser using localStorage method");
   }
 };
